@@ -1,0 +1,27 @@
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+    <main>
+    <select name="language" id="slct1" onclick="BoomIt()">
+        <option value="Pascal" selected>Pascal</option>
+        <option value="C#">C#</option>
+        <option value="C++">C++</option>
+    </select>
+<code>
+<ol id="1text_area" class="txta" contentEditable="true" onkeypress="TChange()"></ol>
+</code>
+<br>
+<button onclick="TranslateIt()">CLICK</button>
+<br><br>
+<select name="language" id="slct2">
+    <option value="Pascal">Pascal</option>
+    <option value="C#" selected>C#</option>
+    <option value="C++">C++</option>
+</select>
+<code><ol id="2text_area" class="txta" contentEditable="true" onkeypress="TChange()"></ol></code>
+</main>
+<!-- <textarea id="t2" name="" id="" cols="30" rows="10"></textarea> -->
+<script src="./program.js"></script>
+</body>

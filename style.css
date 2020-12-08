@@ -1,0 +1,18 @@
+.txta {
+  height:auto;
+  width:400px;
+  background:white;
+  border:2px solid black;
+  resize: vertical;
+  overflow:auto;
+  padding: 10;
+  counter-reset: number;
+  list-style-type: none;
+  border-radius: 5px;  
+}
+.txta li::before {
+  counter-increment: number;
+  content: counter(number)"\a0";
+  color: gray;
+  padding-right: 10;
+}

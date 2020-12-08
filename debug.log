@@ -1,0 +1,50 @@
+[1006/233630.373:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1006/233630.375:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1006/233630.376:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1006/233630.376:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1006/233630.376:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1006/233630.376:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1006/233630.376:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1006/233630.376:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1007/215025.214:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1007/215025.215:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1007/215025.303:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1007/215025.303:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1007/215025.303:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1007/215025.303:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1007/215025.303:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1007/215025.304:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1008/200742.084:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1008/200742.100:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1008/200742.100:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1008/200742.100:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1008/200742.100:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1008/200742.100:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1008/200742.100:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1008/200742.100:ERROR:crash_report_database_win.cc(469)] failed to stat report
+[1013/192913.216:ERROR:crash_report_database_win.cc(498)] failed to stat report
+[1013/192913.248:ERROR:crash_report_database_win.cc(498)] failed to stat report
+[1013/192913.248:ERROR:crash_report_database_win.cc(498)] failed to stat report
+[1013/192913.248:ERROR:crash_report_database_win.cc(498)] failed to stat report
+[1013/192913.248:ERROR:crash_report_database_win.cc(498)] failed to stat report
+[1013/192913.249:ERROR:crash_report_database_win.cc(498)] failed to stat report
+[1013/192913.249:ERROR:crash_report_database_win.cc(498)] failed to stat report
+[1013/192913.249:ERROR:crash_report_database_win.cc(498)] failed to stat report
+[1013/193913.202:ERROR:crash_report_database_win.cc(498)] failed to stat report
+[1013/193913.202:ERROR:crash_report_database_win.cc(498)] failed to stat report
+[1013/193913.202:ERROR:crash_report_database_win.cc(498)] failed to stat report
+[1013/193913.202:ERROR:crash_report_database_win.cc(498)] failed to stat report
+[1013/193913.202:ERROR:crash_report_database_win.cc(498)] failed to stat report
+[1013/193913.202:ERROR:crash_report_database_win.cc(498)] failed to stat report
+[1013/193913.202:ERROR:crash_report_database_win.cc(498)] failed to stat report
+[1013/193913.202:ERROR:crash_report_database_win.cc(498)] failed to stat report
+[1013/193913.203:ERROR:filesystem_win.cc(116)] GetFileAttributes C:\Users\puhly\AppData\Local\Google\Chrome\User Data\Crashpad\reports\e136155d-a636-48a0-9c48-77bf9ab5ed10.dmp: Не удается найти указанный файл. (0x2)
+[1013/193913.204:ERROR:filesystem_win.cc(116)] GetFileAttributes C:\Users\puhly\AppData\Local\Google\Chrome\User Data\Crashpad\reports\39317c80-d2f7-49b2-ac7f-87f6fe804215.dmp: Не удается найти указанный файл. (0x2)
+[1013/193913.204:ERROR:filesystem_win.cc(116)] GetFileAttributes C:\Users\puhly\AppData\Local\Google\Chrome\User Data\Crashpad\reports\81e9747a-9a49-43b4-a469-a6d47d94104b.dmp: Не удается найти указанный файл. (0x2)
+[1013/193913.204:ERROR:filesystem_win.cc(116)] GetFileAttributes C:\Users\puhly\AppData\Local\Google\Chrome\User Data\Crashpad\reports\01df5729-88d2-44f7-9dd2-3d2dcf6658fb.dmp: Не удается найти указанный файл. (0x2)
+[1013/193913.204:ERROR:filesystem_win.cc(116)] GetFileAttributes C:\Users\puhly\AppData\Local\Google\Chrome\User Data\Crashpad\reports\a77c67a0-2d70-40bf-be7c-d911f156e38e.dmp: Не удается найти указанный файл. (0x2)
+[1013/193913.205:ERROR:filesystem_win.cc(116)] GetFileAttributes C:\Users\puhly\AppData\Local\Google\Chrome\User Data\Crashpad\reports\86aabe22-3217-4e6a-8f54-86379038fae3.dmp: Не удается найти указанный файл. (0x2)
+[1013/193913.205:ERROR:filesystem_win.cc(116)] GetFileAttributes C:\Users\puhly\AppData\Local\Google\Chrome\User Data\Crashpad\reports\b441b55c-5b0e-4518-823e-14bfe3ef42b4.dmp: Не удается найти указанный файл. (0x2)
+[1013/193913.205:ERROR:filesystem_win.cc(116)] GetFileAttributes C:\Users\puhly\AppData\Local\Google\Chrome\User Data\Crashpad\reports\8355b456-83c4-4b5b-9afb-c613536958b2.dmp: Не удается найти указанный файл. (0x2)
+[1013/193913.205:ERROR:directory_reader_win.cc(43)] FindFirstFile: Системе не удается найти указанный путь. (0x3)
+[1208/204754.027:ERROR:directory_reader_win.cc(43)] FindFirstFile: Системе не удается найти указанный путь. (0x3)
