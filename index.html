@@ -1,27 +1,90 @@
 <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="./style.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
+  <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
-    <main>
-    <select name="language" id="slct1" onclick="BoomIt()">
-        <option value="Pascal" selected>Pascal</option>
-        <option value="C#">C#</option>
-        <option value="C++">C++</option>
-    </select>
-<code>
-<ol id="1text_area" class="txta" contentEditable="true" onkeypress="TChange()"></ol>
-</code>
-<br>
-<button onclick="TranslateIt()">CLICK</button>
-<br><br>
-<select name="language" id="slct2">
-    <option value="Pascal">Pascal</option>
-    <option value="C#" selected>C#</option>
-    <option value="C++">C++</option>
-</select>
-<code><ol id="2text_area" class="txta" contentEditable="true" onkeypress="TChange()"></ol></code>
-</main>
-<!-- <textarea id="t2" name="" id="" cols="30" rows="10"></textarea> -->
-<script src="./program.js"></script>
+  <title>Translate Engine</title>
+  <main>
+    <div class="flex-container" style="padding: 10px">
+      <div style="padding-top: 13">
+        Translate from
+        <select
+          name="language"
+          id="slct1"
+          onclick="BoomIt()"
+          style="margin: 0 10 0 10"
+        >
+          <option value="Pascal" selected>Pascal</option>
+          <option value="C#">C#</option>
+          <option value="C++">C++</option></select
+        >to
+        <select name="language" id="slct2" style="margin: 0 10 0 10">
+          <option value="Pascal">Pascal</option>
+          <option value="C#" selected>C#</option>
+          <option value="C++">C++</option>
+        </select>
+      </div>
+      <br />
+      <button onclick="TranslateIt()" class="btn_2">
+        <span class="bgrnd_txt">Translate</span>
+        <span class="bgrnd"></span>
+        <span class="btn_2content"></span>
+      </button>
+      <br />
+      <button class="btn_1" onclick="open_AS()">
+        <span class="arrows"></span>
+        <span class="btn_1content">Load</span>
+      </button>
+        <label style="margin: 15" class="checkbox"
+          ><input
+          type="checkbox"
+          id="checkbox"
+          onclick="localStorage.setItem('check_autosave', this.checked)"
+        /><span class="checkmark"></span>
+          Auto Save
+          <i class="fa fa-save" style="font-weight: bold;"></i>
+        </label>
+    </div>
+    <div class="flex-container">
+      <code>
+        <ol
+          id="1text_area"
+          class="txta"
+          contenteditable
+          onkeypress="TChange()"
+          oninput="go_AS()"
+        ></ol>
+      </code>
+      <code
+        ><ol
+          id="2text_area"
+          class="txta right"
+          contenteditable
+          onkeypress="TChange()"
+        ></ol
+      ></code>
+    </div>
+  </main>
+  <script src="./program.js"></script>
+  <script>
+    if (!localStorage.key('check_autosave'))
+      localStorage.setItem('check_autosave', true)
+    if (localStorage.getItem('check_autosave') == 'true')
+      document.getElementById('checkbox').checked = true
+
+    document.querySelector('ol').addEventListener('paste', function (e) {
+      document
+        .getElementById('1text_area')
+        .innerHTML.replace(/\n(.+?)/g, '<li>$1</li>')
+      e.preventDefault()
+      var text = e.clipboardData.getData('text/plain')
+      document.execCommand('insertHTML', false, text)
+    })
+  </script>
+  <span class="build">build 3 (21.12.2020)</span>
 </body>

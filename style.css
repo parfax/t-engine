@@ -1,9 +1,12 @@
+/* Инпуты */
 .txta {
+  margin: 10px;
   height:auto;
-  width:400px;
+  width:auto;
+  min-width: 400;
   background:white;
   border:2px solid black;
-  resize: vertical;
+  resize:both;
   overflow:auto;
   padding: 10;
   counter-reset: number;
@@ -16,3 +19,197 @@
   color: gray;
   padding-right: 10;
 }
+::-webkit-resizer {
+  border: 20px solid transparent; 
+  border-right: 20px solid black;
+   border-bottom: 20px solid black;
+}
+
+/* Checkbox */
+.checkbox{
+  display: block;
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+.checkbox input{
+  opacity: 0;
+  cursor: pointer;
+  margin: 5;
+}
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  border: 2px solid black;
+}
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.checkbox input:checked ~ .checkmark {
+  background-color: red;
+}
+.checkbox input:checked ~ .checkmark:after{
+  display: block;
+}
+.checkbox .checkmark:after {
+  left: 7px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+/* Выбор языка */
+select{
+  height: 25px;
+  width: 100px;
+}
+/* кнопка "Перевести" */
+.btn_2{
+  width: 150px;
+  height: 50px;
+  border: 0;
+  background:  #202020;
+  position: relative;
+  font-size: 20px;
+  font-weight: bold;
+  color: #202020;
+  clip-path: polygon(92% 0, 100% 25%, 100% 100%, 8% 100%, 0% 75%, 0 0);
+}
+.btn_2 *{
+  transition: all .5s;
+  display: flex;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  right: 3px;
+  bottom: 3px;
+}
+.btn_2content {
+  background: white;
+  clip-path: polygon(92% 0, 100% 25%, 100% 100%, 8% 100%, 0% 75%, 0 0);
+}
+.bgrnd{
+  width: 150px;
+  transform: translate(-200px,0px);
+  z-index: 1;
+  background: #202020;
+  box-shadow: 20px 0px 0px red;
+}
+.bgrnd_txt{
+  transition: all .5s;
+    align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+.btn_2:hover .bgrnd_txt {color: white;}
+.btn_2:hover .bgrnd {transform: translate(0px,0px);}
+
+
+/* Кнопка "Load" */
+.btn_1 {
+  width: 150px;
+  height: 50px;
+  border: 0;
+  background: black;
+  position: relative;
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+  transition: all .2s;
+}
+.btn_1:hover .btn_1content {
+  color: white;
+  background: black;
+}
+.btn_1:hover .arrows {
+  background: white;
+  animation: gg 1.5s;
+}
+@keyframes gg {
+  0% {opacity: 0;}
+  5% {opacity: 1;}
+  10% {opacity: 0;}
+  15% {opacity: 1;}
+}
+.btn_1:active .arrows {
+  background: red;
+  margin: 2 2 2 2;
+}
+.btn_1 *{
+  transition: all .2s;
+  display: flex;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  right: 3px;
+  bottom: 3px;
+}
+.arrows {
+  background: black;
+  margin: 1;
+}
+.btn_1content {
+  transition: all .2s;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  clip-path: polygon(92% 0, 100% 25%, 100% 100%, 8% 100%, 0% 75%, 0 0);
+}
+.animated {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+
+/* Шрифт e-Ukraine */
+@font-face {
+  font-family: "e-Ukraine";
+  src: url("fonts/e-UkraineHead-Medium.woff") format("woff");
+}
+
+/* flex(горизонтально) */
+.flex-container {
+  display: flex;
+  flex-direction: row;
+}
+/* оптимизация flex(вниз) под мобильное устройство */
+@media (max-width: 800px) {
+  .flex-container {
+    flex-direction: column;
+  }
+}
+/* номер сборки (номер, дата) */
+.build{
+  position:sticky;
+  left: 100%;
+  top: 100%;
+  color: gray;
+}
+/* Мелкое */
+button{margin: 0 20 0 20;cursor: pointer;}
+body{font-family: e-Ukraine;}
+input{cursor: pointer;}
+.right{float: right;}
+.h1-1{font-family: sans-serif;font-size: 42px;}
+* {outline: 0; -webkit-tap-highlight-color: transparent;}
