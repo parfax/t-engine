@@ -1,10 +1,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-  />
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
@@ -16,17 +13,22 @@
         <select
           name="language"
           id="slct1"
-          onclick="BoomIt()"
+          onchange="BoomIt();save_language()"
           style="margin: 0 10 0 10"
         >
           <option value="Pascal" selected>Pascal</option>
-          <option value="C#">C#</option>
-          <option value="C++">C++</option></select
+          <option value="C#" disabled>C#</option>
+          <option value="JS" disabled>JavaScript</option></select
         >to
-        <select name="language" id="slct2" style="margin: 0 10 0 10">
-          <option value="Pascal">Pascal</option>
+        <select
+          name="language"
+          id="slct2"
+          style="margin: 0 10 0 10"
+          onchange="save_language()"
+        >
+          <option value="Pascal" disabled>Pascal</option>
           <option value="C#" selected>C#</option>
-          <option value="C++">C++</option>
+          <option value="JS" disabled>JavaScript</option>
         </select>
       </div>
       <br />
@@ -36,19 +38,19 @@
         <span class="btn_2content"></span>
       </button>
       <br />
-      <button class="btn_1" onclick="open_AS()">
+      <button class="btn_1" onclick="open_AS()" title="Load last save">
         <span class="arrows"></span>
         <span class="btn_1content">Load</span>
       </button>
-        <label style="margin: 15" class="checkbox"
-          ><input
+      <label style="margin: 15" class="checkbox"
+        ><input
           type="checkbox"
           id="checkbox"
           onclick="localStorage.setItem('check_autosave', this.checked)"
         /><span class="checkmark"></span>
-          Auto Save
-          <i class="fa fa-save" style="font-weight: bold;"></i>
-        </label>
+        Auto Save
+        <i class="fa fa-save"></i>
+      </label>
     </div>
     <div class="flex-container">
       <code>
@@ -61,7 +63,13 @@
         ></ol>
       </code>
       <code
-        ><ol
+        ><div class="tooltip">
+          <button onclick="copy()" onmouseout="outFunc()">
+            <span class="tooltiptext" id="myTooltip">Copy to clipboard</span>
+            <i class="fa fa-copy"></i>
+          </button>
+        </div>
+        <ol
           id="2text_area"
           class="txta right"
           contenteditable
@@ -70,21 +78,71 @@
       ></code>
     </div>
   </main>
+  <footer>
+    <div class="flex-container">
+      <h3 onclick="document.body.scrollTop=document.body.scrollHeight">
+        Contact us
+      </h3>
+      <div class="social_bar">
+        <h4>Follow us</h4>
+        <a target="_blank" href="https://www.instagram.com/translate.engine/">
+          <i class="fab fa-instagram a-f"></i>
+        </a>
+        <a target="_blank" href="https://www.youtube.com/channel/UCF6-S13KekXw25RmOU_UIBQ/">
+          <i class="fab fa-youtube a-f"></i>
+        </a>
+      </div>
+    </div>
+    <p>Noticed a bug? Write to us in support, we will definitely consider.</p>
+    <div class="form_div">
+      <form
+        name="contact"
+        method="POST"
+        data-netlify="true"
+        data-netlify-recaptcha="true"
+        style="margin-bottom: 10"
+      >
+        <label>Your Name: <input type="text" name="name" required /></label
+        ><br />
+        <label>Your Email: <input type="email" name="email" required /></label
+        ><br /><br />
+        <label
+          >Describe the bug or suggestion: <br /><textarea
+            name="message"
+            style="height: 95px; width: 335px"
+            required
+          ></textarea></label
+        ><br />
+        <input type="file" name="file" style="border: 0" />
+        <br /><br />
+        <button class="btn_3 right" type="submit">
+          <span class="bgrnd3_txt">Send</span>
+          <span class="bgrnd3"></span>
+          <span class="btn_3content"></span>
+        </button>
+        <div data-netlify-recaptcha="true"></div>
+        <br />
+      </form>
+    </div>
+    <canvas id="canvas1"></canvas>
+  </footer>
   <script src="./program.js"></script>
   <script>
-    if (!localStorage.key('check_autosave'))
-      localStorage.setItem('check_autosave', true)
-    if (localStorage.getItem('check_autosave') == 'true')
-      document.getElementById('checkbox').checked = true
+    // Auto Save System 2.0
+    if (!localStorage.key("check_autosave"))
+      localStorage.setItem("check_autosave", true);
+    if (localStorage.getItem("check_autosave") == "true")
+      document.getElementById("checkbox").checked = true;
 
-    document.querySelector('ol').addEventListener('paste', function (e) {
+    // Не вставлять html теги
+    document.querySelector("ol").addEventListener("paste", function (e) {
       document
-        .getElementById('1text_area')
-        .innerHTML.replace(/\n(.+?)/g, '<li>$1</li>')
-      e.preventDefault()
-      var text = e.clipboardData.getData('text/plain')
-      document.execCommand('insertHTML', false, text)
-    })
+        .getElementById("1text_area")
+        .innerHTML.replace(/\n(.+?)/g, "<li>$1</li>");
+      e.preventDefault();
+      var text = e.clipboardData.getData("text/plain");
+      document.execCommand("insertHTML", false, text);
+    });
   </script>
-  <span class="build">build 3 (21.12.2020)</span>
+  <span class="build">build 4 (28.12.2020)</span>
 </body>
