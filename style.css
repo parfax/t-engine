@@ -312,6 +312,7 @@ form textarea{border: 2px solid black;border-radius: 4px;}
   box-shadow:0px 0px 15px black;
 }
 .a-f{color:whitesmoke; font-size: 32px;margin: 0 10px;}
+.a-f:hover{color:rgb(216, 216, 216); font-size: 34px;}
 .social_bar{
   display: flex;
   position: absolute;

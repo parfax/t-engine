@@ -10,7 +10,7 @@ let particlesArray;
 let mouse = {
   x:undefined,
   y: undefined,
-  radius: (canvas.height / 50) * (canvas.width / 50)
+  radius: (canvas.height / 60) * (canvas.width / 60)
 }
 canvas.onmousemove = function(e) {
   var rect = this.getBoundingClientRect();
@@ -69,26 +69,6 @@ function init() {
     particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
   }
 }
-function connect() {
-  let opacity = 1;
-  for (let a = 0; a < particlesArray.length; a++){
-    for (let b = a; b < particlesArray.length; b++){
-      let distance = ((particlesArray[a].x - particlesArray[b].x)
-        * (particlesArray[a].x - particlesArray[b].x))
-        + ((particlesArray[a].y - particlesArray[b].y) *
-          (particlesArray[a].y - particlesArray[b].y));
-      if (distance < (canvas.width / 7) * (canvas.height / 7)) {
-        opacity=1-(distance/20000)
-        ctx.strokeStyle = 'rgba(255, 255, 255,'+opacity+')';
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
-        ctx.stroke();
-      }
-    }
-  }
-}
 function animate() {
   requestAnimationFrame(animate);
   ctx.clearRect(0, 0, innerWidth, innerHeight);
@@ -96,7 +76,6 @@ function animate() {
   for (let i = 0; i < particlesArray.length; i++){
     particlesArray[i].update();
   }
-  connect();
 }
 init();
 animate();
@@ -104,7 +83,7 @@ window.addEventListener('resize',
   function () {
     canvas.width = canvas.offsetWidth;
     canvas.height = canvas.offsetHeight;
-    mouse.radius = ((canvas.width / 50) * (canvas.height / 50));
+    mouse.radius = ((canvas.width / 60) * (canvas.height / 60));
     init();
   }
 );
