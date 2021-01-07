@@ -1,28 +1,28 @@
 /* Инпуты */
 .txta {
   margin: 10px;
-  height:auto;
-  width:auto;
+  height: auto;
+  width: auto;
   min-width: 400;
-  background:white;
-  border:2px solid black;
-  resize:both;
-  overflow:auto;
+  background: white;
+  border: 2px solid black;
+  resize: both;
+  overflow: auto;
   padding: 10;
   counter-reset: number;
   list-style-type: none;
-  border-radius: 5px;  
+  border-radius: 5px;
 }
 .txta li::before {
   counter-increment: number;
-  content: counter(number)"\a0";
+  content: counter(number) "\a0";
   color: gray;
   padding-right: 10;
 }
 ::-webkit-resizer {
-  border: 20px solid transparent; 
+  border: 20px solid transparent;
   border-right: 20px solid black;
-   border-bottom: 20px solid black;
+  border-bottom: 20px solid black;
 }
 
 /* Подсказка */
@@ -30,7 +30,12 @@
   position: absolute;
   transform: translate(-18px, 0px);
 }
-.tooltip button {border: none;font-size: 14px;padding: 4;background: white;}
+.tooltip button {
+  border: none;
+  font-size: 14px;
+  padding: 4;
+  background: white;
+}
 .tooltip .tooltiptext {
   visibility: hidden;
   width: 140px;
@@ -63,7 +68,7 @@
 }
 
 /* Checkbox */
-.checkbox{
+.checkbox {
   display: block;
   position: relative;
   -webkit-user-select: none;
@@ -72,7 +77,7 @@
   user-select: none;
   cursor: pointer;
 }
-.checkbox input{
+.checkbox input {
   opacity: 0;
   cursor: pointer;
   margin: 5;
@@ -94,7 +99,7 @@
 .checkbox input:checked ~ .checkmark {
   background-color: red;
 }
-.checkbox input:checked ~ .checkmark:after{
+.checkbox input:checked ~ .checkmark:after {
   display: block;
 }
 .checkbox .checkmark:after {
@@ -110,27 +115,27 @@
 }
 
 /* Выбор языка */
-select{
+select {
   height: 25px;
   width: 100px;
-  border:2px solid black;
+  border: 2px solid black;
   font-weight: bold;
   cursor: pointer;
 }
 /* кнопка "Перевести" */
-.btn_2{
+.btn_2 {
   width: 150px;
   height: 50px;
   border: 0;
-  background:  #202020;
+  background: #202020;
   position: relative;
   font-size: 20px;
   font-weight: bold;
   color: #202020;
   clip-path: polygon(92% 0, 100% 25%, 100% 100%, 8% 100%, 0% 75%, 0 0);
 }
-.btn_2 *{
-  transition: all .5s;
+.btn_2 * {
+  transition: all 0.5s;
   display: flex;
   position: absolute;
   top: 3px;
@@ -142,21 +147,25 @@ select{
   background: white;
   clip-path: polygon(92% 0, 100% 25%, 100% 100%, 8% 100%, 0% 75%, 0 0);
 }
-.bgrnd{
+.bgrnd {
   width: 150px;
-  transform: translate(-200px,0px);
+  transform: translate(-200px, 0px);
   z-index: 1;
   background: #202020;
   box-shadow: 20px 0px 0px red;
 }
-.bgrnd_txt{
-  transition: all .5s;
-    align-items: center;
+.bgrnd_txt {
+  transition: all 0.5s;
+  align-items: center;
   justify-content: center;
   z-index: 2;
 }
-.btn_2:hover .bgrnd_txt {color: white;}
-.btn_2:hover .bgrnd {transform: translate(0px,0px);}
+.btn_2:hover .bgrnd_txt {
+  color: white;
+}
+.btn_2:hover .bgrnd {
+  transform: translate(0px, 0px);
+}
 
 /* Кнопка "Load" */
 .btn_1 {
@@ -168,7 +177,7 @@ select{
   font-size: 20px;
   font-weight: bold;
   color: black;
-  transition: all .2s;
+  transition: all 0.2s;
 }
 .btn_1:hover .btn_1content {
   color: white;
@@ -179,17 +188,27 @@ select{
   animation: gg 1.5s;
 }
 @keyframes gg {
-  0% {opacity: 0;}
-  5% {opacity: 1;}
-  10% {opacity: 0;}
-  15% {opacity: 1;}
+  0% {
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  10% {
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
 }
 .btn_1:active .arrows {
   background: red;
   margin: 2;
 }
-.btn_1 .btn_1content, .arrows, .btn_1content{
-  transition: all .2s;
+.btn_1 .btn_1content,
+.arrows,
+.btn_1content {
+  transition: all 0.2s;
   display: flex;
   position: absolute;
   top: 3px;
@@ -202,52 +221,58 @@ select{
   margin: 1;
 }
 .btn_1content {
-  transition: all .2s;
+  transition: all 0.2s;
   align-items: center;
   justify-content: center;
   background: white;
   clip-path: polygon(92% 0, 100% 25%, 100% 100%, 8% 100%, 0% 75%, 0 0);
 }
-/* кнопка "Sent" */
-.btn_3{
-  width: 150px;
-  height: 50px;
-  border: 0;
-  background:  black;
+
+/* Icons */
+.arrow-down {
+  height: 40px;
+  width: 40px;
+  border: 1px solid rgba(255, 0, 0, 0.4);
   position: relative;
-  font-size: 20px;
-  font-weight: bold;
-  color: #202020;
-  clip-path: polygon(92% 0, 100% 25%, 100% 100%, 8% 100%, 0% 75%, 0 0);
-}
-.btn_3 *{
-  transition: all .5s;
+  cursor: pointer;
+  overflow: hidden;
   display: flex;
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  right: 3px;
-  bottom: 3px;
 }
-.btn_3content {
-  background: #202020;
-  clip-path: polygon(92% 0, 100% 25%, 100% 100%, 8% 100%, 0% 75%, 0 0);
+.s{
+  top: 20;
+    position: absolute;
+    width: .75rem;
+    height: .1rem;
+    background: red;
+    display: inline-block;
+    z-index: 1;
 }
-.bgrnd3{
-  width: 150px;
-  transform: translate(-200px,0px);
-  z-index: 1;
+.arrowLeft {
+  left: 10;
+  transform: rotate(45deg);
+  transition: all .4s ease;
+}
+.arrowRight {
+  right: 10;
+  transform: rotate(-45deg);
+  transition: all .4s ease;
+}
+.arrow-slide {
+  left: 0;
+  top: -100%;
+  width: 100%;
+  height: 100%;
   background: red;
+  position: absolute;
+  display: block;
+  transition: all 0.3s ease-in-out;
 }
-.bgrnd3_txt{
-  color: white;
-  transition: all .5s;
-    align-items: center;
-  justify-content: center;
-  z-index: 2;
+.arrow-down:hover .arrow-slide {
+  top: 0;
 }
-.btn_3:hover .bgrnd3_txt {color: black;}
-.btn_3:hover .bgrnd3 {transform: translate(0px,0px);}
+.arrow-down:hover .s{background: black;}
+.active span:first-of-type{transform: rotate(-45deg);}
+.active span:last-of-type{transform: rotate(45deg);} 
 
 /* Шрифт e-Ukraine */
 @font-face {
@@ -268,10 +293,23 @@ select{
 }
 
 /* Footer */
-footer{color: white;height: 500;transform: translate(0,430px);}
-footer h3{
+.centerFooter {
   position: absolute;
-  padding:30 0 0 30;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 20;
+}
+.container {
+  margin: 20;
+}
+footer {
+  color: white;
+  height: 80;
+  transform: translate(0,0);
+}
+footer h3 {
+  position: absolute;
+  padding: 30 0 0 30;
   cursor: pointer;
   margin: 0;
   z-index: 1;
@@ -283,61 +321,166 @@ footer h3:after {
   transform: scaleX(0);
   transition: transform 250ms ease-in-out;
 }
-footer h3:hover:after {transform: scaleX(1);}
-footer p{
+footer h3:hover:after {
+  transform: scaleX(1);
+}
+footer p {
   position: absolute;
   font-size: 13px;
-  padding:70 0 0 70;margin: 0;
+  padding: 70 0 0 70;
+  margin: 0;
 }
-form input{
-  border:2px solid black;
-  cursor: text;border-radius: 4px;
-  height: 30px;
+form {
+  color: #202020;
+}
+form input + label {
+  font-family: sans-serif;
+  position: absolute;
+  left: 30;
+  font-weight: bold;
+  color: #202020;
+  transition: 0.2s;
+  padding-top: 25px;
+  z-index: 2;
+}
+form input {
+  padding-top: 10px;
+  padding-left: 10px;
+  height: 50px;
+  cursor: text;
+  border: 3px solid #202020;
+  outline: 0;
+  font-weight: bold;
+  border-radius: 4px;
+  width: 250px;
+  margin: 10 10 0 0;
+}
+form input:focus + label,
+form input:valid + label {
+  position: absolute;
+  font-size: 11px;
+  transform: translate(0px, -10px);
+}
+form textarea {
+  border: 3px solid black;
+  border-radius: 4px;
   padding: 5;
+  max-width: 740px;
+  max-height: 230px;
+  min-height: 80px;
+  min-width: 285px;
 }
-form textarea{border: 2px solid black;border-radius: 4px;}
-#canvas1{
+#canvas1 {
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
   width: 100%;
   height: 100%;
-  background:linear-gradient(to right, #202020,black);
+  background: linear-gradient(to right, #202020, black);
 }
-.form_div{
-  position:absolute; 
-  transform: translate(0px,100px);
-  margin-left: 80;width: 350px;
-  background: rgba(0, 0, 0, 0.7);
-  padding: 20;
-  box-shadow:0px 0px 15px black;
-}
-.a-f{color:whitesmoke; font-size: 32px;margin: 0 10px;}
-.a-f:hover{color:rgb(216, 216, 216); font-size: 34px;}
-.social_bar{
-  display: flex;
+.form_div {
   position: absolute;
-  right: 25;
-  padding:5;
-  margin: 0;
-  color:whitesmoke;
+  transform: translate(0px, 100px);
+  margin-left: 80;
+  width: auto;
+  background: white;
+  padding: 20;
+  box-shadow: 0px 0px 15px black;
+}
+.social_bar {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  color: whitesmoke;
+  text-align: center;
+}
+.netbox {
+  position: relative;
+  
+  display: flex;
   justify-content: center;
   align-items: center;
+  
+  border: 1px solid #444;
+}
+.social_bar a {cursor:default;}
+.social_bar i{
+  cursor: pointer;
+  color: #555;
+  font-size: 40px;
+    padding: 0.6rem 0.6rem;
+    transition: color .2s ease-in-out;
+    margin: 0 0.4rem;
+}
+.social_bar a:after {
+    position: absolute;
+    top: -25;
+    right: 0;
+    
+    content: 'Follow us';
+    color: #444;
+    font-size: 14px;
+}
+.social_bar a:before {
+    position: absolute;
+    top: -0.5rem;
+    right: 0;
+    
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    
+    background: linear-gradient(to right, transparent, #555 20% 1%);
+  }
+.social_bar i:hover {
+  color:  rgb(131, 0, 0);
 }
 
 /* номер сборки (номер, дата) */
-.build{
+.build {
   font-size: 13px;
-  position:fixed;
+  position: fixed;
   right: 5;
   bottom: 5;
   color: gray;
 }
 /* Мелкое */
-main{margin: 5;}
-html{scroll-behavior: smooth;}
-button{margin: 0 20 0 20;cursor: pointer;}
-body{font-family: e-Ukraine;margin: 0;height: 100%;display: grid;grid-template-rows: 1fr auto;}
-input{cursor: pointer;}
-.right{float: right;}
-.h1-1{font-family: sans-serif;font-size: 42px;}
-* {outline: 0; -webkit-tap-highlight-color: transparent;}
+main {
+  margin: 5;
+}
+html {
+  scroll-behavior: smooth;
+}
+button {
+  margin: 0 20 0 20;
+  cursor: pointer;
+}
+body {
+  font-family: e-Ukraine;
+  margin: 0;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+input {
+  cursor: pointer;
+}
+.right {
+  float: right;
+}
+.h1-1 {
+  font-family: sans-serif;
+  font-size: 42px;
+}
+hr{
+  border: none;
+  height: 1px;
+  background:linear-gradient(to right, transparent,whitesmoke  30% 70%, transparent);
+}
+a{text-decoration: none;}
+* {
+  outline: 0;
+  -webkit-tap-highlight-color: transparent;
+}

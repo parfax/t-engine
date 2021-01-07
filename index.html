@@ -79,51 +79,86 @@
     </div>
   </main>
   <footer>
-    <div class="flex-container">
-      <h3 onclick="document.body.scrollTop=document.body.scrollHeight">
+    <div class="centerFooter">
+      <!-- Намёк на обратную связь :D
+        <h3 onclick="document.body.scrollTop=document.body.scrollHeight">
         Contact us
-      </h3>
-      <div class="social_bar">
-        <h4>Follow us</h4>
-        <a target="_blank" href="https://www.instagram.com/translate.engine/">
-          <i class="fab fa-instagram a-f"></i>
-        </a>
-        <a target="_blank" href="https://www.youtube.com/channel/UCF6-S13KekXw25RmOU_UIBQ/">
-          <i class="fab fa-youtube a-f"></i>
-        </a>
-      </div>
+      </h3> -->
+      <a class="arrow-down" id="arrow" onclick="openFooter()">
+           <span class="arrowLeft s"></span>
+         <span class="arrow-slide"></span>
+           <span class="arrowRight s"></span>
+      </a>
     </div>
+    <div class="social_bar" id="soc">
+        <div class="netbox">
+        <div style="text-align: center;min-height: 42px;">
+        <a target="_blank" href="https://www.instagram.com/translate.engine/">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a
+          target="_blank"
+          href="https://www.youtube.com/channel/UCF6-S13KekXw25RmOU_UIBQ/"
+        >
+          <i class="fab fa-youtube"></i>
+        </a>
+        </div>
+        </div>
+      </div>
+      <!-- Намёк на обратную связь :D
+    <div style="display: none;">
     <p>Noticed a bug? Write to us in support, we will definitely consider.</p>
     <div class="form_div">
       <form
         name="contact"
         method="POST"
         data-netlify="true"
-        data-netlify-recaptcha="true"
         style="margin-bottom: 10"
+        class="flex-container"
       >
-        <label>Your Name: <input type="text" name="name" required /></label
-        ><br />
-        <label>Your Email: <input type="email" name="email" required /></label
-        ><br /><br />
-        <label
-          >Describe the bug or suggestion: <br /><textarea
-            name="message"
-            style="height: 95px; width: 335px"
-            required
-          ></textarea></label
-        ><br />
-        <input type="file" name="file" style="border: 0" />
-        <br /><br />
-        <button class="btn_3 right" type="submit">
-          <span class="bgrnd3_txt">Send</span>
-          <span class="bgrnd3"></span>
-          <span class="btn_3content"></span>
-        </button>
-        <div data-netlify-recaptcha="true"></div>
-        <br />
+        <div>
+          <div>
+            <input
+              id="name"
+              type="text"
+              name="name"
+              required
+              autocomplete maxlength="16"
+            />
+            <label for="name">name</label>
+          </div>
+          <div>
+            <input id="email" type="email" name="email" required />
+            <label for="email">email</label>
+          </div>
+          <input type="file" name="file"
+           style="border: 0" accept="video/*, image/*"
+            multiple
+            />
+        </div>
+        <div class="container">
+          <label
+            >Describe the bug or suggestion: <br /><textarea
+              name="message"
+              style="height: 95px; width: 335px"
+              required
+            ></textarea></label
+          ><br />
+          <br />
+          <button
+            class="btn_2"
+            type="submit"
+            style="position: absolute; bottom: 10; right: 5"
+          >
+            <span class="bgrnd_txt">Send</span>
+            <span class="bgrnd"></span>
+            <span class="btn_2content"></span>
+          </button>
+        </div>
+        </div>
       </form>
     </div>
+  -->
     <canvas id="canvas1"></canvas>
   </footer>
   <script src="./program.js"></script>
@@ -143,6 +178,11 @@
       var text = e.clipboardData.getData("text/plain");
       document.execCommand("insertHTML", false, text);
     });
+
+    // Arrow Down
+    document.querySelector('.arrow-down').addEventListener('click', function() {
+      this.classList.toggle('active');
+    });
   </script>
-  <span class="build">build 4 (28.12.2020)</span>
+  <span class="build">build 5 (7.01.2021)</span>
 </body>

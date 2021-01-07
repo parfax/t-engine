@@ -93,6 +93,31 @@ canvas.addEventListener('mouseout',
     mouse.y = undefined;
   }
 );
+
+
+
+function openFooter() {
+  var footer = document.querySelector('footer');
+  footer.style.height = 500;
+  document.body.scrollTop = document.body.scrollHeight;
+  canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+    mouse.radius = ((canvas.width / 60) * (canvas.height / 60));
+  init();
+  document.getElementById('arrow').setAttribute("onClick", "closeFooter()");
+  document.getElementById('soc').style.display = 'block';
+}
+function closeFooter() {
+  var footer = document.querySelector('footer');
+  footer.style.height = 80;
+  document.body.scrollTop = document.body.scrollHeight;
+  canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+    mouse.radius = ((canvas.width / 60) * (canvas.height / 60));
+  init();
+  document.getElementById('arrow').setAttribute("onClick", "openFooter()");
+  document.getElementById('soc').style.display = 'none';
+}
 // Canvas   E N D
 
 // Добавляет строку с цифрой
@@ -188,6 +213,34 @@ function outFunc() {
   tooltip.innerHTML = "Copy to clipboard";
 }
 
+// File Input
+// function checkFile(fileInput) {
+//   var curFiles = fileInput.files;
+//   if (curFiles.length === 0) {
+//     for (var i = 0; i < curFiles.length; i++) {
+//       if (checkFileType(curFiles[i])) {
+//   alert(':фіа)');
+//       }
+//       else {
+        
+//   alert(':)');
+//       }
+//     }
+//   }
+// }
+// var fileTypes = [
+//   'image/*',
+//   'video/*'
+// ]
+// function checkFileType(file) {
+//   for(var i = 0; i < fileTypes.length; i++) {
+//     if(file.type === fileTypes[i]) {
+//       return true;
+//     }
+//   }
+//   return false;
+// }
+
 // Сам переводчик
 function TranslateIt(){
   slct1 = document.getElementById("slct1");
@@ -233,11 +286,15 @@ function TranslateIt(){
       <li>{</li>
       `)
       .replace(/'/gi, "\"")
+      .replace(/\bfor\b(.+?)\bdo\b/gi, "for($1)&$501")
+      .replace(/for\((.+?)=(.+?)\bto\b(.+?)\)&\$501/gi,"for($1=$2; $1<$3; $1++)&$501")
+      .replace(/for\((.+?)=(.+?)\bdownto\b(.+?)\)&\$501/gi, "for($1=$2; $1>$3; $1--)&$501")
+      .replace(/for\((.+?)\)&\$501/gi,"for($1)")
       .replace(/repeat(.+?)until(.+?);/gi, "do{\n$1\n}while($2);")
-      .replace(/while\((.+?)=(.+?)\)/g,"while($1!=$2)")
+      .replace(/while\((.+?)=(.+?)\)/g, "while($1!=$2)")
       .replace(/clrscr;/gi,"Console.Clear();")
-      .replace(/random\((.+?)\)/gi,"rnd.Next($1)")
-      .replace(/randomize;/gi,"Random rnd = new Random();")
+      .replace(/random\((.+?)\)/gi,"random.Next($1)")
+      .replace(/randomize;/gi,"Random random = new Random();")
       .replace(/write(?!ln)/gi, "Console.Write") //write('sad', 'sad', 'sad');
       .replace(/"([^"]+)"\s*,/gi, "\"$1\"+") // в write(, менялась на +)
       .replace(/,\s*"(.+?)"/gi, "+ \"$1\"")
