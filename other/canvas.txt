@@ -180,7 +180,16 @@ function init() {
     particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
   }
 }
+function animate() {
+  requestAnimationFrame(animate);
+  ctx.clearRect(0, 0, innerWidth, innerHeight);
+
+  for (let i = 0; i < particlesArray.length; i++){
+    particlesArray[i].update();
+  }
+}
 init();
+animate();
 window.addEventListener('resize',
   function () {
     canvas.width = canvas.offsetWidth;

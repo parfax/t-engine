@@ -7,7 +7,7 @@
 <body>
   <title>Translate Engine</title>
   <main>
-    <div class="flex-container" style="padding: 10px">
+    <div class="flex-container us-none" style="padding: 10px">
       <div style="padding-top: 13">
         Translate from
         <select
@@ -93,6 +93,9 @@
     <div class="social_bar" id="soc">
         <div class="netbox">
         <div style="text-align: center;min-height: 42px;">
+        <a target="_blank" href="https://www.facebook.com/">
+          <i class="fab fa-facebook"></i>
+        </a>
         <a target="_blank" href="https://www.instagram.com/translate.engine/">
           <i class="fab fa-instagram"></i>
         </a>
@@ -164,8 +167,10 @@
   <script src="./program.js"></script>
   <script>
     // Auto Save System 2.0
-    if (!localStorage.key("check_autosave"))
+    if (!localStorage.key("check_autosave")){
       localStorage.setItem("check_autosave", true);
+      save_language()
+    }
     if (localStorage.getItem("check_autosave") == "true")
       document.getElementById("checkbox").checked = true;
 
@@ -184,5 +189,5 @@
       this.classList.toggle('active');
     });
   </script>
-  <span class="build">build 5 (7.01.2021)</span>
+  <span class="build">build 6 (24.01.2021)</span>
 </body>

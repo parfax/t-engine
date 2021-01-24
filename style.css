@@ -394,6 +394,7 @@ form textarea {
   transform: translate(-50%,-50%);
   color: whitesmoke;
   text-align: center;
+  z-index: 1;
 }
 .netbox {
   position: relative;
@@ -402,12 +403,12 @@ form textarea {
   justify-content: center;
   align-items: center;
   
-  border: 1px solid #444;
+  border: 1px solid #555;
 }
 .social_bar a {cursor:default;}
 .social_bar i{
   cursor: pointer;
-  color: #555;
+  color: #666;
   font-size: 40px;
     padding: 0.6rem 0.6rem;
     transition: color .2s ease-in-out;
@@ -415,24 +416,23 @@ form textarea {
 }
 .social_bar a:after {
     position: absolute;
-    top: -25;
+    top: -18;
     right: 0;
     
     content: 'Follow us';
-    color: #444;
+    color: #555;
     font-size: 14px;
 }
 .social_bar a:before {
     position: absolute;
-    top: -0.5rem;
-    right: 0;
+    top: -10;
     
     content: '';
     display: block;
-    width: 100%;
+    width: 150;
     height: 1px;
     
-    background: linear-gradient(to right, transparent, #555 20% 1%);
+    background: linear-gradient(to right, transparent, rgba(255, 0, 0, 0.4) 20%);
   }
 .social_bar i:hover {
   color:  rgb(131, 0, 0);
@@ -445,10 +445,15 @@ form textarea {
   right: 5;
   bottom: 5;
   color: gray;
+  user-select: none;
 }
 /* Мелкое */
+.us-none{user-select: none;}
 main {
-  margin: 5;
+  padding: 5;
+  /* background: white;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px; */
 }
 html {
   scroll-behavior: smooth;
@@ -458,6 +463,7 @@ button {
   cursor: pointer;
 }
 body {
+  /*background: linear-gradient(to right, #202020, black);*/
   font-family: e-Ukraine;
   margin: 0;
   height: 100%;

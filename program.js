@@ -10,7 +10,7 @@ let particlesArray;
 let mouse = {
   x:undefined,
   y: undefined,
-  radius: (canvas.height / 60) * (canvas.width / 60)
+  radius: (canvas.height / 50) * (canvas.width / 50)
 }
 canvas.onmousemove = function(e) {
   var rect = this.getBoundingClientRect();
@@ -69,6 +69,26 @@ function init() {
     particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
   }
 }
+function connect() {
+  let opacity = 1;
+  for (let a = 0; a < particlesArray.length; a++){
+    for (let b = a; b < particlesArray.length; b++){
+      let distance = ((particlesArray[a].x - particlesArray[b].x)
+        * (particlesArray[a].x - particlesArray[b].x))
+        + ((particlesArray[a].y - particlesArray[b].y) *
+          (particlesArray[a].y - particlesArray[b].y));
+      if (distance < (canvas.width / 7) * (canvas.height / 7)) {
+        opacity=1-(distance/20000)
+        ctx.strokeStyle = 'rgba(255, 255, 255,'+opacity+')';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+        ctx.stroke();
+      }
+    }
+  }
+}
 function animate() {
   requestAnimationFrame(animate);
   ctx.clearRect(0, 0, innerWidth, innerHeight);
@@ -76,6 +96,7 @@ function animate() {
   for (let i = 0; i < particlesArray.length; i++){
     particlesArray[i].update();
   }
+  connect();
 }
 init();
 animate();
@@ -83,7 +104,7 @@ window.addEventListener('resize',
   function () {
     canvas.width = canvas.offsetWidth;
     canvas.height = canvas.offsetHeight;
-    mouse.radius = ((canvas.width / 60) * (canvas.height / 60));
+    mouse.radius = ((canvas.width / 50) * (canvas.height / 50));
     init();
   }
 );
@@ -259,7 +280,9 @@ function TranslateIt(){
        <li>{</li>
   `
     + firstTextarea.innerHTML
-      .replace(/uses(.+?);/gi,"")
+      .replace(/uses(.+?);/gi, "")
+
+      // Операторы
       .replace(/\bif\b(.+?)=(.+?)then/gi, "if $1==$2 then")
       .replace(/\bif\b\s*\((.+?)\)/gi, "if $1")
       .replace(/and\s*\((.+?)=(.+?)\)/gi, "&& $1==$2")
@@ -268,9 +291,14 @@ function TranslateIt(){
       .replace(/or\s*\((.+?)\)/gi, "|| $1")
       .replace(/\bif\b(.+?)then/gi, "if ($1)")
       .replace(/&lt;&gt;/g,"!=")
-      .replace(/{(.+?)}/gi, "//$1")
-      .replace(/:/g, "")
+      .replace(/{(.+?)}/g, "//$1")
+      .replace(/'(.+?):(.+?)'/g, "\'$1:&$500$2\'") // &$500 Временный символ
+      .replace(/:(?!&\$500)/g, "")
+
+      // ...
       .replace(/program (.+?);/i, "public class $1{")
+
+      // Data-Types
       .replace(/\bvar\b/gi, "<li></li>")
       .replace(/<li><\/li>(.+?)Integer;/gi, "<li>static int $1;</li><li></li>")
       .replace(/<li><\/li>(.+?)Real;/gi, "<li>static float $1;</li><li></li>")
@@ -280,32 +308,50 @@ function TranslateIt(){
       .replace(/<li><\/li>(.+?)Integer(.+?);/gi, "<li>static int $1$2;</li><li></li>")
       .replace(/<li><\/li>(.+?)Real(.+?);/gi, "<li>static float $1$2;</li><li></li>")
       .replace(/<li><\/li>(.+?)Boolean(.+?);/gi,"<li>static bool $1$2;</li><li></li>")
-      .replace(/<li><\/li>(.+?)Char(.+?);/gi,"<li>static char $1$2;</li><li></li>")
+      .replace(/<li><\/li>(.+?)Char(.+?);/gi, "<li>static char $1$2;</li><li></li>")
+      
+      // ...
       .replace(/begin/i, 
       `\n<li>public static void Main(string[] args)</li>
       <li>{</li>
       `)
       .replace(/'/gi, "\"")
-      .replace(/\bfor\b(.+?)\bdo\b/gi, "for($1)&$501")
+
+      // Циклы
+      .replace(/\bfor\b(.+?)\bdo\b/gi, "for($1)&$501") // &$501 Временный символ
       .replace(/for\((.+?)=(.+?)\bto\b(.+?)\)&\$501/gi,"for($1=$2; $1<$3; $1++)&$501")
       .replace(/for\((.+?)=(.+?)\bdownto\b(.+?)\)&\$501/gi, "for($1=$2; $1>$3; $1--)&$501")
       .replace(/for\((.+?)\)&\$501/gi,"for($1)")
       .replace(/repeat(.+?)until(.+?);/gi, "do{\n$1\n}while($2);")
       .replace(/while\((.+?)=(.+?)\)/g, "while($1!=$2)")
+      // foreach
+
+      // ...
       .replace(/clrscr;/gi,"Console.Clear();")
       .replace(/random\((.+?)\)/gi,"random.Next($1)")
-      .replace(/randomize;/gi,"Random random = new Random();")
+      .replace(/randomize;/gi, "Random random = new Random();")
+      
+      // Write & Read
       .replace(/write(?!ln)/gi, "Console.Write") //write('sad', 'sad', 'sad');
       .replace(/"([^"]+)"\s*,/gi, "\"$1\"+") // в write(, менялась на +)
       .replace(/,\s*"(.+?)"/gi, "+ \"$1\"")
       .replace(/writeln;/gi, "Console.WriteLine();")
       .replace(/writeln/gi, "Console.WriteLine")
-      .replace(/readln();|readln;|readln/gi,"Console.ReadLine();")  
-      .replace(/readln\((.+?)\)/gi,"$1 = Console.ReadLine()")     
+      .mreplace(/<li>readln\((.+?)\)<\/li>/gi, " = Console.ReadLine();")
+      .mreplace(/<li>readln\((.+?)\);<\/li>/gi, " = Console.ReadLine();")
+      .replace(/readln\(\);|readln\(\)|readln;|readln/gi, "Console.ReadLine();") 
+      
+      // ...
       .replace(/end;|end.|end/gi, "}")
+
+      // Операторы
+      .replace(/\bdiv\b/gi, "/")
       .replace(/\bmod\b/gi, "%")
-      .replace(/read();|read;/gi,"Console.Read();") 
-      .replace(/read\((.+?)\)/gi,"$1 = Console.Read()") 
+      
+      // ...
+      .mreplace(/<li>read\((.+?)\)<\/li>/gi, " = Console.Read();")
+      .mreplace(/<li>read\((.+?)\);<\/li>/gi, " = Console.Read();")
+      .replace(/\bread\(\);|\bread\(\)|read;|\bread\b/gi,"Console.Read();")
       .replace(/<li><\/li>(.+?)Char(.+?);/gi,"<li>static char $1 $2;</li><li></li>")
       .replace(/char (.+?)\s*=\s*"(.+?)"/gi, "char $1 = '$2'")
       .replace(/begin/gi, "{")
@@ -315,3 +361,19 @@ function TranslateIt(){
     `;
   }
 }
+
+// О чудо, слава Украине оно работает
+String.prototype.mreplace = function(reg, res) { 
+  if (this.match(reg)) {
+    return this.replace(
+      reg,
+      (fullMatch, subgroup) => {
+        return subgroup
+                .split(',')
+                .map(letter => `<li>${letter}${res}</li>`)
+                .join('');
+      }
+    );
+  }
+  return this;
+};
