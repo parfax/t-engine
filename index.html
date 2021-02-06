@@ -51,6 +51,7 @@
         Auto Save
         <i class="fa fa-save"></i>
       </label>
+      <p id="bt"></p>
     </div>
     <div class="flex-container">
       <code>
@@ -188,6 +189,14 @@
     document.querySelector('.arrow-down').addEventListener('click', function() {
       this.classList.toggle('active');
     });
+
+    // Bug Tracker
+    var btc=0;
+    bt = document.getElementById('bt');
+    window.onerror = function (error) {
+      btc++;
+        bt.innerHTML= "<i class='fas fa-times-circle' style='color: rgb(200, 5, 5)'></i> " + btc;
+    }
   </script>
   <span class="build">build 6 (24.01.2021)</span>
 </body>

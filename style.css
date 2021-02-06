@@ -191,13 +191,13 @@ select {
   0% {
     opacity: 0;
   }
-  5% {
+  7% {
     opacity: 1;
   }
-  10% {
+  13% {
     opacity: 0;
   }
-  15% {
+  18% {
     opacity: 1;
   }
 }
@@ -233,6 +233,8 @@ select {
   height: 40px;
   width: 40px;
   border: 1px solid rgba(255, 0, 0, 0.4);
+  background: #101010;
+  box-shadow: 0 0 20px #101010;
   position: relative;
   cursor: pointer;
   overflow: hidden;
@@ -398,7 +400,8 @@ form textarea {
 }
 .netbox {
   position: relative;
-  
+  background: #101010;
+  box-shadow: 0 0 20px #101010;
   display: flex;
   justify-content: center;
   align-items: center;
