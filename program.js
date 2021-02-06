@@ -291,7 +291,7 @@ function TranslateIt(){
       .replace(/or\s*\((.+?)\)/gi, "|| $1")
       .replace(/\bif\b(.+?)then/gi, "if ($1)")
       .replace(/&lt;&gt;/g,"!=")
-      .replace(/{(.+?)}/g, "//$1")
+      .replace(/{(.+?)}/g, "/* $1 */")
       .replace(/'(.+?):(.+?)'/g, "\'$1:&$500$2\'") // &$500 Временный символ
       .replace(/:(?!&\$500)/g, "")
 
@@ -322,9 +322,9 @@ function TranslateIt(){
       .replace(/for\((.+?)=(.+?)\bto\b(.+?)\)&\$501/gi,"for($1=$2; $1<$3; $1++)&$501")
       .replace(/for\((.+?)=(.+?)\bdownto\b(.+?)\)&\$501/gi, "for($1=$2; $1>$3; $1--)&$501")
       .replace(/for\((.+?)\)&\$501/gi,"for($1)")
-      .replace(/repeat(.+?)until(.+?);/gi, "do{\n$1\n}while($2);")
-      .replace(/while\((.+?)=(.+?)\)/g, "while($1!=$2)")
-      // foreach
+      .replace(/\brepeat(.+?)until(.+?);/gi, "do{\n$1\n}while($2);")
+      .replace(/\bwhile\((.+?)=(.+?)\)/g, "while($1!=$2)")
+      .replace(/\bforeach\b(.+?)\binteger(.+?)\bdo\b/gi, "foreach(int $1$2)&$501")
 
       // ...
       .replace(/clrscr;/gi,"Console.Clear();")
@@ -344,9 +344,20 @@ function TranslateIt(){
       // ...
       .replace(/end;|end.|end/gi, "}")
 
-      // Операторы
+      // Операторы, operators
       .replace(/\bdiv\b/gi, "/")
       .replace(/\bmod\b/gi, "%")
+
+      // Функции, functions
+      .replace(/\bSqr\s*\((.+?)\)/gi, "$1*$1")
+      .replace(/\bAbs\s*\((.+?)\)/gi, "Math.Abs($1)")
+      .replace(/\bSqrt\s*\((.+?)\)/gi, "Math.Sqrt($1)")
+      .replace(/\bSin\s*\((.+?)\)/gi, "Math.Sin($1)")
+      .replace(/\bCos\s*\((.+?)\)/gi, "Math.Cos($1)")
+      .replace(/\bArctan\s*\((.+?)\)/gi, "Math.Atan($1)")
+      .replace(/\bLn\s*\((.+?)\)/gi, "Math.Log($1)")
+      .replace(/\bExp\s*\((.+?)\)/gi, "Math.Exp($1)")
+      .replace(/\bPi\b/gi, "Math.Pi")
       
       // ...
       .mreplace(/<li>read\((.+?)\)<\/li>/gi, " = Console.Read();")
@@ -368,6 +379,7 @@ String.prototype.mreplace = function(reg, res) {
     return this.replace(
       reg,
       (fullMatch, subgroup) => {
+        subgroup = subgroup.replace(/ /g, "")
         return subgroup
                 .split(',')
                 .map(letter => `<li>${letter}${res}</li>`)
