@@ -297,20 +297,6 @@ function TranslateIt(){
 
       // ...
       .replace(/program (.+?);/i, "public class $1{")
-
-      // Data-Types
-      .replace(/\bvar\b/gi, "<li></li>")
-      .replace(/<li><\/li>(.+?)Integer;/gi, "<li>static int $1;</li><li></li>")
-      .replace(/<li><\/li>(.+?)Real;/gi, "<li>static float $1;</li><li></li>")
-      .replace(/<li><\/li>(.+?)Boolean;/gi,"<li>static bool $1;</li><li></li>")
-      .replace(/<li><\/li>(.+?)Char;/gi, "<li>static char $1;</li><li></li>")
-      
-      .replace(/<li><\/li>(.+?)Integer(.+?);/gi, "<li>static int $1$2;</li><li></li>")
-      .replace(/<li><\/li>(.+?)Real(.+?);/gi, "<li>static float $1$2;</li><li></li>")
-      .replace(/<li><\/li>(.+?)Boolean(.+?);/gi,"<li>static bool $1$2;</li><li></li>")
-      .replace(/<li><\/li>(.+?)Char(.+?);/gi, "<li>static char $1$2;</li><li></li>")
-      
-      // ...
       .replace(/begin/i, 
       `\n<li>public static void Main(string[] args)</li>
       <li>{</li>
@@ -324,7 +310,34 @@ function TranslateIt(){
       .replace(/for\((.+?)\)&\$501/gi,"for($1)")
       .replace(/\brepeat(.+?)until(.+?);/gi, "do{\n$1\n}while($2);")
       .replace(/\bwhile\((.+?)=(.+?)\)/g, "while($1!=$2)")
-      .replace(/\bforeach\b(.+?)\binteger(.+?)\bdo\b/gi, "foreach(int $1$2)&$501")
+      .replace(/\bforeach\b(.+?) \binteger(.+?)\bdo\b/gi, "foreach(int $1$2)")
+      .replace(/\bforeach\b(.+?) \bstring(.+?)\bdo\b/gi, "foreach(string $1$2)")
+      .replace(/\bforeach\b(.+?) \binteger(.+?)\bdo\b/gi, "foreach(int $1$2)")
+      .replace(/\bforeach\s*var\b(.+?)\bdo\b/gi, "foreach(&$501var$1)")
+
+      // Data-Types
+      .replace(/\bvar\b/gi, "<li></li>")
+      .replace(/\btype\b/gi, "Type")
+      .replace(/<li><\/li>(.+?)Integer;/gi, "<li>static int $1;</li><li></li>")
+      .replace(/<li><\/li>(.+?)Real;/gi, "<li>static float $1;</li><li></li>")
+      .replace(/<li><\/li>(.+?)Boolean;/gi,"<li>static bool $1;</li><li></li>")
+      .replace(/<li><\/li>(.+?)Char;/gi, "<li>static char $1;</li><li></li>")
+      .replace(/<li><\/li>(.+?)String;/gi, "<li>static string $1;</li><li></li>")
+      
+      .replace(/<li><\/li>(.+?)Integer(.+?);/gi, "<li>static int $1$2;</li><li></li>")
+      .replace(/<li><\/li>(.+?)Real(.+?);/gi, "<li>static float $1$2;</li><li></li>")
+      .replace(/<li><\/li>(.+?)Boolean(.+?);/gi,"<li>static bool $1$2;</li><li></li>")
+      .replace(/<li><\/li>(.+?)Char(.+?);/gi, "<li>static char $1$2;</li><li></li>")
+      .replace(/<li><\/li>(.+?)String(.+?);/gi, "<li>static string $1$2;</li><li></li>")
+
+      // Массивы
+      .replace(/<li>(.+?)\barray\s*\[-(\d+)..(\d+)\]\s*of\s*integer;/gi, "<li>$1int[] = new int[$2+$3];")
+      .replace(/<li>(.+?)\barray\s*\[(\d+)..-(\d+)\]\s*of\s*integer;/gi, "<li>$1int[] = new int[$2+$3];")
+      .replace(/<li>(.+?)\barray\s*\[-(\d+)..-(\d+)\]\s*of\s*integer;/gi, "<li>$1int[] = new int[$2+$3];")
+      .replace(/<li>(.+?)\barray\s*\[(\d+)..(\d+)\]\s*of\s*integer;/gi, "<li>$1int[] = new int[$2+$3];")
+    
+      // Циклы
+      .replace(/foreach\(&\$501var(.+?)\)/gi, "foreach(var$1)")
 
       // ...
       .replace(/clrscr;/gi,"Console.Clear();")

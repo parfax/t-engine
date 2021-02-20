@@ -240,24 +240,24 @@ select {
   overflow: hidden;
   display: flex;
 }
-.s{
+.s {
   top: 20;
-    position: absolute;
-    width: .75rem;
-    height: .1rem;
-    background: red;
-    display: inline-block;
-    z-index: 1;
+  position: absolute;
+  width: 0.75rem;
+  height: 0.1rem;
+  background: red;
+  display: inline-block;
+  z-index: 1;
 }
 .arrowLeft {
   left: 10;
   transform: rotate(45deg);
-  transition: all .4s ease;
+  transition: all 0.4s ease;
 }
 .arrowRight {
   right: 10;
   transform: rotate(-45deg);
-  transition: all .4s ease;
+  transition: all 0.4s ease;
 }
 .arrow-slide {
   left: 0;
@@ -272,9 +272,15 @@ select {
 .arrow-down:hover .arrow-slide {
   top: 0;
 }
-.arrow-down:hover .s{background: black;}
-.active span:first-of-type{transform: rotate(-45deg);}
-.active span:last-of-type{transform: rotate(45deg);} 
+.arrow-down:hover .s {
+  background: black;
+}
+.active span:first-of-type {
+  transform: rotate(-45deg);
+}
+.active span:last-of-type {
+  transform: rotate(45deg);
+}
 
 /* Шрифт e-Ukraine */
 @font-face {
@@ -307,7 +313,7 @@ select {
 footer {
   color: white;
   height: 80;
-  transform: translate(0,0);
+  transform: translate(0, 0);
 }
 footer h3 {
   position: absolute;
@@ -393,7 +399,7 @@ form textarea {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   color: whitesmoke;
   text-align: center;
   z-index: 1;
@@ -405,40 +411,42 @@ form textarea {
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
   border: 1px solid #555;
 }
-.social_bar a {cursor:default;}
-.social_bar i{
+.social_bar a {
+  cursor: default;
+}
+.social_bar i {
   cursor: pointer;
   color: #666;
   font-size: 40px;
-    padding: 0.6rem 0.6rem;
-    transition: color .2s ease-in-out;
-    margin: 0 0.4rem;
+  padding: 0.6rem 0.6rem;
+  transition: color 0.2s ease-in-out;
+  margin: 0 0.4rem;
 }
 .social_bar a:after {
-    position: absolute;
-    top: -18;
-    right: 0;
-    
-    content: 'Follow us';
-    color: #555;
-    font-size: 14px;
+  position: absolute;
+  top: -18;
+  right: 0;
+
+  content: "Follow us";
+  color: #555;
+  font-size: 14px;
 }
 .social_bar a:before {
-    position: absolute;
-    top: -10;
-    
-    content: '';
-    display: block;
-    width: 150;
-    height: 1px;
-    
-    background: linear-gradient(to right, transparent, rgba(255, 0, 0, 0.4) 20%);
-  }
+  position: absolute;
+  top: -10;
+
+  content: "";
+  display: block;
+  width: 150;
+  height: 1px;
+
+  background: linear-gradient(to right, transparent, rgba(255, 0, 0, 0.4) 20%);
+}
 .social_bar i:hover {
-  color:  rgb(131, 0, 0);
+  color: rgb(131, 0, 0);
 }
 
 /* номер сборки (номер, дата) */
@@ -451,7 +459,9 @@ form textarea {
   user-select: none;
 }
 /* Мелкое */
-.us-none{user-select: none;}
+.us-none {
+  user-select: none;
+}
 main {
   padding: 5;
   /* background: white;
@@ -483,12 +493,19 @@ input {
   font-family: sans-serif;
   font-size: 42px;
 }
-hr{
+hr {
   border: none;
   height: 1px;
-  background:linear-gradient(to right, transparent,whitesmoke  30% 70%, transparent);
+  background: linear-gradient(
+    to right,
+    transparent,
+    whitesmoke 30% 70%,
+    transparent
+  );
 }
-a{text-decoration: none;}
+a {
+  text-decoration: none;
+}
 * {
   outline: 0;
   -webkit-tap-highlight-color: transparent;
