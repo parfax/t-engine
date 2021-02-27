@@ -331,10 +331,15 @@ function TranslateIt(){
       .replace(/<li><\/li>(.+?)String(.+?);/gi, "<li>static string $1$2;</li><li></li>")
 
       // Массивы
-      .replace(/<li>(.+?)\barray\s*\[-(\d+)..(\d+)\]\s*of\s*integer;/gi, "<li>$1int[] = new int[$2+$3];")
-      .replace(/<li>(.+?)\barray\s*\[(\d+)..-(\d+)\]\s*of\s*integer;/gi, "<li>$1int[] = new int[$2+$3];")
-      .replace(/<li>(.+?)\barray\s*\[-(\d+)..-(\d+)\]\s*of\s*integer;/gi, "<li>$1int[] = new int[$2+$3];")
-      .replace(/<li>(.+?)\barray\s*\[(\d+)..(\d+)\]\s*of\s*integer;/gi, "<li>$1int[] = new int[$2+$3];")
+      .replace(/<li>(.+?)\barray\s*\[-(\w+)..(\w+)\]\s*of\s*integer;/gi, "<li>$1int[] = new int[$2+$3];")
+      .replace(/<li>(.+?)\barray\s*\[(\w+)..-(\w+)\]\s*of\s*integer;/gi, "<li>$1int[] = new int[$2+$3];")
+      .replace(/<li>(.+?)\barray\s*\[-(\w+)..-(\w+)\]\s*of\s*integer;/gi, "<li>$1int[] = new int[$2+$3];")
+      .replace(/<li>(.+?)\barray\s*\[(\w+)..(\w+)\]\s*of\s*integer;/gi, "<li>$1int[] = new int[$2+$3];")
+
+      .replace(/<li>(.+?)\barray\s*\[-(\w+)..(\w+)\]\s*of\s*real;/gi, "<li>$1float[] = new float[$2+$3];")
+      .replace(/<li>(.+?)\barray\s*\[(\w+)..-(\w+)\]\s*of\s*real;/gi, "<li>$1float[] = new float[$2+$3];")
+      .replace(/<li>(.+?)\barray\s*\[-(\w+)..-(\w+)\]\s*of\s*real;/gi, "<li>$1float[] = new float[$2+$3];")
+      .replace(/<li>(.+?)\barray\s*\[(\w+)..(\w+)\]\s*of\s*real;/gi, "<li>$1float[] = new float[$2+$3];")
     
       // Циклы
       .replace(/foreach\(&\$501var(.+?)\)/gi, "foreach(var$1)")
