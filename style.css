@@ -1,11 +1,11 @@
-/* Инпуты */
+/*Инпуты*/
 .txta {
   margin: 10px;
   height: auto;
   width: auto;
   min-width: 400;
-  background: white;
-  border: 2px solid black;
+  background: #fff;
+  border: 2px solid #000;
   resize: both;
   overflow: auto;
   padding: 10;
@@ -16,15 +16,14 @@
 .txta li::before {
   counter-increment: number;
   content: counter(number) "\a0";
-  color: gray;
+  color: #808080;
   padding-right: 10;
 }
 ::-webkit-resizer {
   border: 20px solid transparent;
-  border-right: 20px solid black;
-  border-bottom: 20px solid black;
+  border-right: 20px solid #000;
+  border-bottom: 20px solid #000;
 }
-
 /* Подсказка */
 .tooltip {
   position: absolute;
@@ -34,7 +33,7 @@
   border: none;
   font-size: 14px;
   padding: 4;
-  background: white;
+  background: #fff;
 }
 .tooltip .tooltiptext {
   visibility: hidden;
@@ -66,7 +65,6 @@
   visibility: visible;
   opacity: 1;
 }
-
 /* Checkbox */
 .checkbox {
   display: block;
@@ -82,22 +80,8 @@
   cursor: pointer;
   margin: 5;
 }
-.checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 20px;
-  width: 20px;
-  background-color: #eee;
-  border: 2px solid black;
-}
-.checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-}
 .checkbox input:checked ~ .checkmark {
-  background-color: red;
+  background-color: #f00;
 }
 .checkbox input:checked ~ .checkmark:after {
   display: block;
@@ -107,18 +91,31 @@
   top: 2px;
   width: 5px;
   height: 10px;
-  border: solid black;
+  border: solid #000;
   border-width: 0 3px 3px 0;
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
-
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  border: 2px solid #000;
+}
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
 /* Выбор языка */
 select {
   height: 25px;
   width: 100px;
-  border: 2px solid black;
+  border: 2px solid #000;
   font-weight: bold;
   cursor: pointer;
 }
@@ -143,8 +140,14 @@ select {
   right: 3px;
   bottom: 3px;
 }
+.btn_2:hover .bgrnd_txt {
+  color: #fff;
+}
+.btn_2:hover .bgrnd {
+  transform: translate(0px, 0px);
+}
 .btn_2content {
-  background: white;
+  background: #fff;
   clip-path: polygon(92% 0, 100% 25%, 100% 100%, 8% 100%, 0% 75%, 0 0);
 }
 .bgrnd {
@@ -152,7 +155,7 @@ select {
   transform: translate(-200px, 0px);
   z-index: 1;
   background: #202020;
-  box-shadow: 20px 0px 0px red;
+  box-shadow: 20px 0px 0px #f00;
 }
 .bgrnd_txt {
   transition: all 0.5s;
@@ -160,36 +163,28 @@ select {
   justify-content: center;
   z-index: 2;
 }
-.btn_2:hover .bgrnd_txt {
-  color: white;
-}
-.btn_2:hover .bgrnd {
-  transform: translate(0px, 0px);
-}
-
 /* Кнопка "Load" */
 .btn_1 {
   width: 150px;
   height: 50px;
   border: 0;
-  background: black;
+  background: #000;
   position: relative;
   font-size: 20px;
   font-weight: bold;
-  color: black;
+  color: #000;
   transition: all 0.2s;
 }
 .btn_1:hover .btn_1content {
-  color: white;
-  background: black;
+  color: #fff;
+  background: #000;
 }
 .btn_1:hover .arrows {
-  background: white;
+  background: #fff;
   animation: gg 1.5s;
 }
-
 .btn_1:active .arrows {
-  background: red;
+  background: #f00;
   margin: 2;
 }
 .btn_1 .btn_1content,
@@ -204,22 +199,21 @@ select {
   bottom: 3px;
 }
 .arrows {
-  background: black;
+  background: #000;
   margin: 1;
 }
 .btn_1content {
   transition: all 0.2s;
   align-items: center;
   justify-content: center;
-  background: white;
+  background: #fff;
   clip-path: polygon(92% 0, 100% 25%, 100% 100%, 8% 100%, 0% 75%, 0 0);
 }
-
 /* Icons */
 .arrow-down {
   height: 40px;
   width: 40px;
-  border: 1px solid rgba(255, 0, 0, 0.4);
+  border: 1px solid rgba(255,0,0,0.4);
   background: #101010;
   box-shadow: 0 0 20px #101010;
   position: relative;
@@ -227,12 +221,18 @@ select {
   overflow: hidden;
   display: flex;
 }
+.arrow-down:hover .arrow-slide {
+  top: 0;
+}
+.arrow-down:hover .s {
+  background: #000;
+}
 .s {
   top: 20;
   position: absolute;
   width: 0.75rem;
   height: 0.1rem;
-  background: red;
+  background: #f00;
   display: inline-block;
   z-index: 1;
 }
@@ -251,16 +251,10 @@ select {
   top: -100%;
   width: 100%;
   height: 100%;
-  background: red;
+  background: #f00;
   position: absolute;
   display: block;
   transition: all 0.3s ease-in-out;
-}
-.arrow-down:hover .arrow-slide {
-  top: 0;
-}
-.arrow-down:hover .s {
-  background: black;
 }
 .active span:first-of-type {
   transform: rotate(-45deg);
@@ -268,13 +262,11 @@ select {
 .active span:last-of-type {
   transform: rotate(45deg);
 }
-
 /* Шрифт e-Ukraine */
 @font-face {
   font-family: "e-Ukraine";
-  src: url("fonts/e-UkraineHead-Medium.woff") format("woff");
+  src: url("./fonts/e-UkraineHead-Medium.woff") format("woff");
 }
-
 /* flex(горизонтально) */
 .flex-container {
   display: flex;
@@ -285,8 +277,14 @@ select {
   .flex-container {
     flex-direction: column;
   }
+  #картинка {
+    width: 0;
+  }
+  .dcontent {
+    display: block;
+    margin: 0 auto 20 auto;
+  }
 }
-
 /* Footer */
 .centerFooter {
   position: absolute;
@@ -298,7 +296,7 @@ select {
   margin: 20;
 }
 footer {
-  color: white;
+  color: #fff;
   height: 80;
   transform: translate(0, 0);
 }
@@ -312,7 +310,7 @@ footer h3 {
 footer h3:after {
   display: block;
   content: "";
-  border-bottom: solid 3px white;
+  border-bottom: solid 3px #fff;
   transform: scaleX(0);
   transition: transform 250ms ease-in-out;
 }
@@ -325,61 +323,21 @@ footer p {
   padding: 70 0 0 70;
   margin: 0;
 }
-form {
-  color: #202020;
-}
-form input + label {
-  font-family: sans-serif;
-  position: absolute;
-  left: 30;
-  font-weight: bold;
-  color: #202020;
-  transition: 0.2s;
-  padding-top: 25px;
-  z-index: 2;
-}
-form input {
-  padding-top: 10px;
-  padding-left: 10px;
-  height: 50px;
-  cursor: text;
-  border: 3px solid #202020;
-  outline: 0;
-  font-weight: bold;
-  border-radius: 4px;
-  width: 250px;
-  margin: 10 10 0 0;
-}
-form input:focus + label,
-form input:valid + label {
-  position: absolute;
-  font-size: 11px;
-  transform: translate(0px, -10px);
-}
-form textarea {
-  border: 3px solid black;
-  border-radius: 4px;
-  padding: 5;
-  max-width: 740px;
-  max-height: 230px;
-  min-height: 80px;
-  min-width: 285px;
-}
 #canvas1 {
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to right, #202020, black);
+  background: linear-gradient(to right, #202020, #000);
 }
 .form_div {
   position: absolute;
   transform: translate(0px, 100px);
   margin-left: 80;
   width: auto;
-  background: white;
+  background: #fff;
   padding: 20;
-  box-shadow: 0px 0px 15px black;
+  box-shadow: 0px 0px 15px #000;
 }
 .social_bar {
   display: none;
@@ -387,22 +345,29 @@ form textarea {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: whitesmoke;
+  color: #f5f5f5;
   text-align: center;
   z-index: 1;
 }
-.netbox {
-  position: relative;
-  background: #101010;
-  box-shadow: 0 0 20px #101010;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  border: 1px solid #555;
-}
 .social_bar a {
   cursor: default;
+}
+.social_bar a:after {
+  position: absolute;
+  top: -18;
+  right: 0;
+  content: "Follow us";
+  color: #555;
+  font-size: 14px;
+}
+.social_bar a:before {
+  position: absolute;
+  top: -10;
+  content: "";
+  display: block;
+  width: 150;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(255,0,0,0.4) 20%);
 }
 .social_bar i {
   cursor: pointer;
@@ -412,73 +377,34 @@ form textarea {
   transition: color 0.2s ease-in-out;
   margin: 0 0.4rem;
 }
-.social_bar a:after {
-  position: absolute;
-  top: -18;
-  right: 0;
-
-  content: "Follow us";
-  color: #555;
-  font-size: 14px;
-}
-.social_bar a:before {
-  position: absolute;
-  top: -10;
-
-  content: "";
-  display: block;
-  width: 150;
-  height: 1px;
-
-  background: linear-gradient(to right, transparent, rgba(255, 0, 0, 0.4) 20%);
-}
 .social_bar i:hover {
-  color: rgb(131, 0, 0);
+  color: #830000;
 }
-
+.netbox {
+  position: relative;
+  background: #101010;
+  box-shadow: 0 0 20px #101010;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #555;
+}
 /* номер сборки (номер, дата) */
 .build {
   font-size: 13px;
   position: fixed;
   right: 5;
   bottom: 5;
-  color: gray;
+  color: #808080;
   user-select: none;
 }
-/* Мелкое */
 .us-none {
   user-select: none;
 }
-main {
-  padding: 5;
-  /* background: white;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px; */
-}
-html {
-  scroll-behavior: smooth;
-}
-button {
-  margin: 0 20 0 20;
-  cursor: pointer;
-}
-body {
-  /*background: linear-gradient(to right, #202020, black);*/
-  font-family: e-Ukraine;
-  margin: 0;
-  height: 100%;
-  display: grid;
-  grid-template-rows: 1fr auto;
-}
-
 /* Ассистент */
-:root {
-  --inpt-clr: rgba(255, 110, 110, 0.3);
-}
 .hideOv {
   overflow: hidden;
 }
-
 .slide {
   display: grid;
   grid-template-rows: 1fr auto;
@@ -487,18 +413,17 @@ body {
   right: 0;
   height: 100%;
   width: 100%;
-  box-shadow: 1px 1px 25px black;
-  overflow-x: hidden;
+  box-shadow: 1px 1px 25px #000;
+  overflow: hidden;
   animation: slide-in 1.2s;
   -webkit-animation: slide-in 1.2s;
 }
-
 .background {
   position: absolute;
   z-index: 4;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to right top, #2a2a2a, black);
+  background: linear-gradient(to right top, #2a2a2a, #000);
 }
 .red-back {
   position: absolute;
@@ -509,8 +434,6 @@ body {
   animation: redBack 1s;
   -webkit-animation: redBack 1s;
 }
-
-
 .dialogue {
   position: absolute;
   display: flex;
@@ -518,54 +441,74 @@ body {
   right: 50%;
   transform: translate(50%, -50%);
   animation: showBlock 1.3s linear forwards;
-  font-smooth: 2em;
 }
 .dcontent {
   position: relative;
   top: 50%;
-  width: 100%;
 }
-
+.anim {
+  animation: showBlock 5s;
+}
 .assisInp {
   border: none;
   border-radius: 3px;
   height: 36px;
   width: 200px;
   cursor: text;
-  background: var(--inpt-clr);
+  background: rgba(255,110,110,0.3);
   transition: all 0.3s;
   padding: 0 10 0 10;
 }
-.assisInp:hover {box-shadow: 1px 1px 15px var(--inpt-clr);}
-.assisInp:focus:hover {box-shadow: 0px 0px 0px var(--inpt-clr);}
-.assisInp::placeholder {
-  color: rgba(255, 255, 255, 0.3);
-}
-.assisInp:focus::placeholder {
-  opacity: 0;
+.assisInp:hover {
+  box-shadow: 1px 1px 15px rgba(255,110,110,0.3);
 }
 .assisInp:focus {
   background: #971127;
 }
-#ai {
-  image-rendering:auto;
-  padding-right: 40;
-  height: 356;
-  width: 402;
+.assisInp:focus:hover {
+  box-shadow: 0px 0px 0px rgba(255,110,110,0.3);
 }
-#bTxt {
+.assisInp:focus::placeholder {
+  opacity: 0;
+}
+.assisInp::placeholder {
+  color: rgba(255,255,255,0.3);
+}
+#картинка {
+  padding-right: 40;
+  min-width: 256;
+  min-height: 302;
+}
+#кнопка {
   width: auto;
   border: none;
   border-radius: 3px;
   padding: 4 10;
-  background: var(--inpt-clr);
-  transition: all 0.3s;
+  margin-top: 20;
+  background: rgba(255,110,110,0.3);
+  transition: box-shadow 0.3s;
 }
-#bTxt:hover {box-shadow: 1px 1px 15px var(--inpt-clr);}
-
-
-
-
+#кнопка:hover {
+  box-shadow: 1px 1px 15px rgba(255,110,110,0.3);
+}
+/* Мелкое */
+main {
+  padding: 5;
+}
+html {
+  scroll-behavior: smooth;
+}
+button {
+  margin: 0 20 0 20;
+  cursor: pointer;
+}
+body {
+  font-family: e-Ukraine;
+  margin: 0;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
 input {
   cursor: pointer;
 }
@@ -579,12 +522,7 @@ input {
 hr {
   border: none;
   height: 1px;
-  background: linear-gradient(
-    to right,
-    transparent,
-    whitesmoke 30% 70%,
-    transparent
-  );
+  background: linear-gradient(to right, transparent, #f5f5f5 30% 70%, transparent);
 }
 a {
   text-decoration: none;
@@ -592,6 +530,73 @@ a {
 * {
   outline: 0;
   -webkit-tap-highlight-color: transparent;
+}
+/* Анимации, Animations */
+@-webkit-keyframes redBack {
+  0% {
+    transform: translate(-100%, 100%) rotate(45deg);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+@-webkit-keyframes slide-in {
+  0% {
+    top: 50%;
+    transform: translate(200%, -50%);
+    right: -200%;
+    height: 80%;
+    width: 80%;
+  }
+  70% {
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    height: 80%;
+    width: 80%;
+  }
+}
+@-moz-keyframes gg {
+  0% {
+    opacity: 0;
+  }
+  7% {
+    opacity: 1;
+  }
+  13% {
+    opacity: 0;
+  }
+  18% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes gg {
+  0% {
+    opacity: 0;
+  }
+  7% {
+    opacity: 1;
+  }
+  13% {
+    opacity: 0;
+  }
+  18% {
+    opacity: 1;
+  }
+}
+@-o-keyframes gg {
+  0% {
+    opacity: 0;
+  }
+  7% {
+    opacity: 1;
+  }
+  13% {
+    opacity: 0;
+  }
+  18% {
+    opacity: 1;
+  }
 }
 @keyframes gg {
   0% {
@@ -607,6 +612,39 @@ a {
     opacity: 1;
   }
 }
+@-moz-keyframes showBlock {
+  0% {
+    opacity: 0;
+  }
+  70% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes showBlock {
+  0% {
+    opacity: 0;
+  }
+  70% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-o-keyframes showBlock {
+  0% {
+    opacity: 0;
+  }
+  70% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 @keyframes showBlock {
   0% {
     opacity: 0;
@@ -618,7 +656,7 @@ a {
     opacity: 1;
   }
 }
-@keyframes redBack {
+@-moz-keyframes redBack {
   0% {
     transform: translate(-100%, 100%) rotate(45deg);
   }
@@ -634,7 +672,23 @@ a {
     transform: translate(0, 0);
   }
 }
-@keyframes slide-in {
+@-o-keyframes redBack {
+  0% {
+    transform: translate(-100%, 100%) rotate(45deg);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+@keyframes redBack {
+  0% {
+    transform: translate(-100%, 100%) rotate(45deg);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+@-moz-keyframes slide-in {
   0% {
     top: 50%;
     transform: translate(200%, -50%);
@@ -651,6 +705,38 @@ a {
   }
 }
 @-webkit-keyframes slide-in {
+  0% {
+    top: 50%;
+    transform: translate(200%, -50%);
+    right: -200%;
+    height: 80%;
+    width: 80%;
+  }
+  70% {
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    height: 80%;
+    width: 80%;
+  }
+}
+@-o-keyframes slide-in {
+  0% {
+    top: 50%;
+    transform: translate(200%, -50%);
+    right: -200%;
+    height: 80%;
+    width: 80%;
+  }
+  70% {
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    height: 80%;
+    width: 80%;
+  }
+}
+@keyframes slide-in {
   0% {
     top: 50%;
     transform: translate(200%, -50%);

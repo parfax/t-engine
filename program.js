@@ -79,7 +79,7 @@ function connect() {
           (particlesArray[a].y - particlesArray[b].y));
       if (distance < (canvas.width / 7) * (canvas.height / 7)) {
         opacity=1-(distance/20000)
-        ctx.strokeStyle = 'rgba(255, 255, 255,'+opacity+')';
+        ctx.strokeStyle = `rgba(255, 255, 255,${opacity})`;
         ctx.lineWidth = 1;
         ctx.beginPath();
         ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
@@ -125,8 +125,8 @@ function openFooter() {
     canvas.height = canvas.offsetHeight;
     mouse.radius = ((canvas.width / 60) * (canvas.height / 60));
   init();
-  document.getElementById('arrow').setAttribute("onClick", "closeFooter()");
-  document.getElementById('soc').style.display = 'block';
+  arrow.setAttribute("onClick", "closeFooter()");
+  soc.style.display = 'block';
 }
 function closeFooter() {
   var footer = document.querySelector('footer');
@@ -136,28 +136,26 @@ function closeFooter() {
     canvas.height = canvas.offsetHeight;
     mouse.radius = ((canvas.width / 60) * (canvas.height / 60));
   init();
-  document.getElementById('arrow').setAttribute("onClick", "openFooter()");
-  document.getElementById('soc').style.display = 'none';
+  arrow.setAttribute("onClick", "openFooter()");
+  soc.style.display = 'none';
 }
 // Canvas   E N D
 
 // Добавляет строку с цифрой
 function TChange() {
-  slct1 = document.getElementById("slct1");
-  firstTextarea = document.getElementById("1text_area");
-  secndTextarea = document.getElementById("2text_area");
-  if (firstTextarea.innerHTML == "")
-    firstTextarea.innerHTML += "<li></li>";
-  else if (secndTextarea.innerHTML == "")
-    secndTextarea.innerHTML += "<li></li>";
+  text_area1 = document.getElementById("text_area1");
+  text_area2 = document.getElementById("text_area2");
+  if (text_area1.innerHTML == "")
+    text_area1.innerHTML += "<li></li>";
+  else if (text_area2.innerHTML == "")
+    text_area2.innerHTML += "<li></li>";
 }
 
 // Меняет стартовое значение
 function BoomIt() {
-  slct1 = document.getElementById("slct1");
-  firstTextarea = document.getElementById("1text_area");
+  text_area1 = document.getElementById("text_area1");
   if (slct1.value == "Pascal") {
-    firstTextarea.innerHTML = `
+    text_area1.innerHTML = `
     <li>program Program1;</li>
     <li></li>
     <li>begin</li>
@@ -166,7 +164,7 @@ function BoomIt() {
     `;
   }
   if (slct1.value == "C#") {
-    firstTextarea.innerHTML = `
+    text_area1.innerHTML = `
     <li>using System;</li>
     <li>using System.Collections.Generic;</li>
     <li>using System.Linq;</li>
@@ -187,52 +185,44 @@ function BoomIt() {
 }
 
 // Auto Save версия 2
-txt_area = document.getElementById('1text_area')
-firstSelect = document.getElementById('slct1')
-secondSelect = document.getElementById('slct2')
 function go_AS() {
   if (localStorage.getItem('check_autosave') == "true")
-    localStorage.setItem("autosave", txt_area.innerHTML)
+    localStorage.setItem("autosave", text_area1.innerHTML)
 }
 function open_AS() {
-  txt_area.innerHTML = localStorage.getItem("autosave")
-  firstSelect.value=localStorage.getItem("firstSelect")
-  secondSelect.value=localStorage.getItem("secondSelect")
+  text_area1.innerHTML = localStorage.getItem("autosave")
+  slct1.value=localStorage.getItem("slct1")
+  slct2.value=localStorage.getItem("slct2")
 }
 function save_language() {
   if (localStorage.getItem('check_autosave') == "true"){
-      localStorage.setItem("firstSelect", firstSelect.value)
-      localStorage.setItem("secondSelect", secondSelect.value)
+      localStorage.setItem("slct1", slct1.value)
+      localStorage.setItem("slct2", slct2.value)
   }
 }
 
 // Copy System
 function copy() {
-  txt_area = document.getElementById("2text_area");
        window.setTimeout(function() {
         var sel, range;
         if (window.getSelection && document.createRange) {
             range = document.createRange();
-            range.selectNodeContents(txt_area);
+            range.selectNodeContents(text_area2);
             sel = window.getSelection();
             sel.removeAllRanges();
           sel.addRange(range);
           document.execCommand("copy");
         } else if (document.body.createTextRange) {
             range = document.body.createTextRange();
-            range.moveToElementText(txt_area);
+            range.moveToElementText(text_area2);
           range.select();
           document.execCommand("copy");
         }
     }, 1);
 
-  tooltip = document.getElementById("myTooltip");
   tooltip.innerHTML = "Copied &#10003";
 }
-function outFunc() {
-  tooltip = document.getElementById("myTooltip");
-  tooltip.innerHTML = "Copy to clipboard";
-}
+function outFunc() { tooltip.innerHTML = "Copy to clipboard"; }
 
 // File Input
 // function checkFile(fileInput) {
@@ -264,13 +254,8 @@ function outFunc() {
 
 // Сам переводчик
 function TranslateIt(){
-  slct1 = document.getElementById("slct1");
-  slct2 = document.getElementById("slct2");
-  firstTextarea = document.getElementById("1text_area");
-  secndTextarea = document.getElementById("2text_area");
-
   if (slct1.value == "Pascal" && slct2.value == "C#") {
-    secndTextarea.innerHTML =
+    text_area2.innerHTML =
       `<li>using System;</li>
        <li>using System.Collections.Generic;</li>
        <li>using System.Linq;</li>
@@ -279,7 +264,7 @@ function TranslateIt(){
        <li>namespace ConsoleApp1</li>
        <li>{</li>
   `
-    + firstTextarea.innerHTML
+    + text_area1.innerHTML
       .replace(/uses(.+?);/gi, "")
 
       // Операторы
@@ -316,30 +301,32 @@ function TranslateIt(){
       .replace(/\bforeach\s*var\b(.+?)\bdo\b/gi, "foreach(&$501var$1)")
 
       // Data-Types
-      .replace(/\bvar\b/gi, "<li></li>")
-      .replace(/\btype\b/gi, "Type")
-      .replace(/<li><\/li>(.+?)Integer;/gi, "<li>static int $1;</li><li></li>")
-      .replace(/<li><\/li>(.+?)Real;/gi, "<li>static float $1;</li><li></li>")
-      .replace(/<li><\/li>(.+?)Boolean;/gi,"<li>static bool $1;</li><li></li>")
-      .replace(/<li><\/li>(.+?)Char;/gi, "<li>static char $1;</li><li></li>")
-      .replace(/<li><\/li>(.+?)String;/gi, "<li>static string $1;</li><li></li>")
+      .replace(/\bvar\b/gi, "&$503")
+      .replace(/\btype\b/gi, "Type&$503")
+      .replace(/&\$503<\/li><li>(.+?)Integer;<\/li>/gi, "<li>static int $1;&$503</li>")
+      .replace(/&\$503<\/li><li>(.+?)Real;<\/li>/gi, "<li>static float $1;&$503</li>")
+      .replace(/&\$503<\/li><li>(.+?)Boolean;<\/li>/gi,"<li>static bool $1;&$503</li>")
+      .replace(/&\$503<\/li><li>(.+?)Char;<\/li>/gi, "<li>static char $1;&$503</li>")
+      .replace(/&\$503<\/li><li>(.+?)String;<\/li>/gi, "<li>static string $1;&$503</li>")
       
-      .replace(/<li><\/li>(.+?)Integer(.+?);/gi, "<li>static int $1$2;</li><li></li>")
-      .replace(/<li><\/li>(.+?)Real(.+?);/gi, "<li>static float $1$2;</li><li></li>")
-      .replace(/<li><\/li>(.+?)Boolean(.+?);/gi,"<li>static bool $1$2;</li><li></li>")
-      .replace(/<li><\/li>(.+?)Char(.+?);/gi, "<li>static char $1$2;</li><li></li>")
-      .replace(/<li><\/li>(.+?)String(.+?);/gi, "<li>static string $1$2;</li><li></li>")
+      .replace(/&\$503<li>(.+?)Integer(.+?);<\/li>/gi, "<li>static int $1$2;</li>&$503")
+      .replace(/&\$503<li>(.+?)Real(.+?);<\/li>/gi, "<li>static float $1$2;</li>&$503")
+      .replace(/&\$503<li>(.+?)Boolean(.+?);<\/li>/gi,"<li>static bool $1$2;</li>&$503")
+      .replace(/&\$503<li>(.+?)Char(.+?);<\/li>/gi, "<li>static char $1$2;</li>&$503")
+      .replace(/&\$503<li>(.+?)String(.+?);<\/li>/gi, "<li>static string $1$2;</li>&$503")
+
+      .replace(/&\$503/gi,'')
 
       // Массивы
-      .replace(/<li>(.+?)\barray\s*\[-(\w+)..(\w+)\]\s*of\s*integer;/gi, "<li>$1int[] = new int[$2+$3];")
-      .replace(/<li>(.+?)\barray\s*\[(\w+)..-(\w+)\]\s*of\s*integer;/gi, "<li>$1int[] = new int[$2+$3];")
-      .replace(/<li>(.+?)\barray\s*\[-(\w+)..-(\w+)\]\s*of\s*integer;/gi, "<li>$1int[] = new int[$2+$3];")
-      .replace(/<li>(.+?)\barray\s*\[(\w+)..(\w+)\]\s*of\s*integer;/gi, "<li>$1int[] = new int[$2+$3];")
+      .replace(/<li>(.+?)\barray\s*\[-(.+?)..(.+?)\]\s*of\s*integer;/gi, "<li>$1int[] = new int[$2+$3];")
+      .replace(/<li>(.+?)\barray\s*\[(.+?)..-(.+?)\]\s*of\s*integer;/gi, "<li>$1int[] = new int[$2+$3];")
+      .replace(/<li>(.+?)\barray\s*\[-(.+?)..-(.+?)\]\s*of\s*integer;/gi, "<li>$1int[] = new int[$2+$3];")
+      .replace(/<li>(.+?)\barray\s*\[(.+?)..(.+?)\]\s*of\s*integer;/gi, "<li>$1int[] = new int[$2+$3];")
 
-      .replace(/<li>(.+?)\barray\s*\[-(\w+)..(\w+)\]\s*of\s*real;/gi, "<li>$1float[] = new float[$2+$3];")
-      .replace(/<li>(.+?)\barray\s*\[(\w+)..-(\w+)\]\s*of\s*real;/gi, "<li>$1float[] = new float[$2+$3];")
-      .replace(/<li>(.+?)\barray\s*\[-(\w+)..-(\w+)\]\s*of\s*real;/gi, "<li>$1float[] = new float[$2+$3];")
-      .replace(/<li>(.+?)\barray\s*\[(\w+)..(\w+)\]\s*of\s*real;/gi, "<li>$1float[] = new float[$2+$3];")
+      .replace(/<li>(.+?)\barray\s*\[-(.+?)..(.+?)\]\s*of\s*real;/gi, "<li>$1float[] = new float[$2+$3];")
+      .replace(/<li>(.+?)\barray\s*\[(.+?)..-(.+?)\]\s*of\s*real;/gi, "<li>$1float[] = new float[$2+$3];")
+      .replace(/<li>(.+?)\barray\s*\[-(.+?)..-(.+?)\]\s*of\s*real;/gi, "<li>$1float[] = new float[$2+$3];")
+      .replace(/<li>(.+?)\barray\s*\[(.+?)..(.+?)\]\s*of\s*real;/gi, "<li>$1float[] = new float[$2+$3];")
     
       // Циклы
       .replace(/foreach\(&\$501var(.+?)\)/gi, "foreach(var$1)")

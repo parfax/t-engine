@@ -53,12 +53,11 @@
         Auto Save
         <i class="fa fa-save"></i>
       </label>
-      <p id="bt"></p>
     </div>
     <div class="flex-container">
       <code>
         <ol
-          id="1text_area"
+          id="text_area1"
           class="txta"
           contenteditable
           onkeypress="TChange()"
@@ -68,12 +67,12 @@
       <code
         ><div class="tooltip">
           <button onclick="copy()" onmouseout="outFunc()">
-            <span class="tooltiptext" id="myTooltip">Copy to clipboard</span>
+            <span class="tooltiptext" id="tooltip">Copy to clipboard</span>
             <i class="fa fa-copy"></i>
           </button>
         </div>
         <ol
-          id="2text_area"
+          id="text_area2"
           class="txta right"
           contenteditable
           onkeypress="TChange()"
@@ -166,6 +165,7 @@
     </div>
   -->
     <canvas id="canvas1"></canvas>
+    
   </footer>
   </div>
   <script src="./program.js"></script>
@@ -176,13 +176,11 @@
       save_language()
     }
     if (localStorage.getItem("check_autosave") == "true")
-      document.getElementById("checkbox").checked = true;
+      checkbox.checked = true;
 
     // Не вставлять html теги
     document.querySelector("ol").addEventListener("paste", function (e) {
-      document
-        .getElementById("1text_area")
-        .innerHTML.replace(/\n(.+?)/g, "<li>$1</li>");
+    text_area1.innerHTML.replace(/\n(.+?)/g, "<li>$1</li>");
       e.preventDefault();
       var text = e.clipboardData.getData("text/plain");
       document.execCommand("insertHTML", false, text);
@@ -192,14 +190,6 @@
     document.querySelector('.arrow-down').addEventListener('click', function() {
       this.classList.toggle('active');
     });
-
-    // Bug Tracker
-    var btc=0;
-    bt = document.getElementById('bt');
-    window.onerror = function (error) {
-      btc++;
-        bt.innerHTML= "<i class='fas fa-times-circle' style='color: rgb(200, 5, 5)'></i> " + btc;
-    }
   </script>
-  <span class="build">build 6 (24.01.2021)</span>
+  <span class="build">build 7 (14.03.2021)</span>
 </body>
