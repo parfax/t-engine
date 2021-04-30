@@ -143,8 +143,6 @@ function closeFooter() {
 
 // Добавляет строку с цифрой
 function TChange() {
-  text_area1 = document.getElementById("text_area1");
-  text_area2 = document.getElementById("text_area2");
   if (text_area1.innerHTML == "")
     text_area1.innerHTML += "<li></li>";
   else if (text_area2.innerHTML == "")
@@ -153,7 +151,6 @@ function TChange() {
 
 // Меняет стартовое значение
 function BoomIt() {
-  text_area1 = document.getElementById("text_area1");
   if (slct1.value == "Pascal") {
     text_area1.innerHTML = `
     <li>program Program1;</li>
