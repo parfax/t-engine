@@ -29,7 +29,7 @@ function letsGo() {
                 картинка.src = "./images/assistant2.png";
                 речь.innerHTML = `Okay ${ответ.value}, before you start working with TE, I will give you a short tour of the interface`
                 localStorage.setItem("Name", ответ.value)
-                //localStorage.setItem("Бывалый", 1)
+                localStorage.setItem("Бывалый", 1)
                 кнопка.style.float = "right"
                 кнопка.innerHTML = "OK, Let's start"
                 ответ.remove()
