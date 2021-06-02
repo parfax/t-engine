@@ -48,19 +48,25 @@ function Pascal2CSharp()
       // Data-Types
       .replace(/\bvar\b/gi, "&$503")
       .replace(/\btype\b/gi, "Type&$503")
-      .replace(/&\$503<\/li><li>(.+?)Integer;<\/li>/gi, "<li>static int $1;&$503</li>")
-      .replace(/&\$503<\/li><li>(.+?)Real;<\/li>/gi, "<li>static float $1;&$503</li>")
-      .replace(/&\$503<\/li><li>(.+?)Boolean;<\/li>/gi,"<li>static bool $1;&$503</li>")
-      .replace(/&\$503<\/li><li>(.+?)Char;<\/li>/gi, "<li>static char $1;&$503</li>")
-      .replace(/&\$503<\/li><li>(.+?)String;<\/li>/gi, "<li>static string $1;&$503</li>")
-      
-      .replace(/&\$503<li>(.+?)Integer(.+?);<\/li>/gi, "<li>static int $1$2;</li>&$503")
-      .replace(/&\$503<li>(.+?)Real(.+?);<\/li>/gi, "<li>static float $1$2;</li>&$503")
-      .replace(/&\$503<li>(.+?)Boolean(.+?);<\/li>/gi,"<li>static bool $1$2;</li>&$503")
-      .replace(/&\$503<li>(.+?)Char(.+?);<\/li>/gi, "<li>static char $1$2;</li>&$503")
-      .replace(/&\$503<li>(.+?)String(.+?);<\/li>/gi, "<li>static string $1$2;</li>&$503")
+      .replace(/Integer;<\/li>/gi, "Integer;</li><li>&$503</li>")
+      .replace(/Real;<\/li>/gi, "Real;</li><li>&$503</li>")
+      .replace(/Boolean;<\/li>/gi,"Boolean;</li><li>&$503</li>")
+      .replace(/Char;<\/li>/gi, "Char;</li><li>&$503</li>")
+      .replace(/String;<\/li>/gi, "String;</li><li>&$503</li>")
 
-      .replace(/&\$503/gi,'')
+      .replace(/<li>&\$503<\/li><li>(.+?)Integer;<\/li>/gi, "<li>static int $1;</li><li>&$503</li>")
+      .replace(/<li>&\$503<\/li><li>(.+?)Real;<\/li>/gi, "<li>static float $1;</li><li>&$503</li>")
+      .replace(/<li>&\$503<\/li><li>(.+?)Boolean;<\/li>/gi,"<li>static bool $1;</li><li>&$503</li>")
+      .replace(/<li>&\$503<\/li><li>(.+?)Char;<\/li>/gi, "<li>static char $1;</li><li>&$503</li>")
+      .replace(/<li>&\$503<\/li><li>(.+?)String;<\/li>/gi, "<li>static string $1;</li><li>&$503</li>")
+      
+      .replace(/<li>&\$503<\/li><li>(.+?)Integer(.+?);<\/li>/gi, "<li>static int $1$2;</li><li>&$503</li>")
+      .replace(/<li>&\$503<\/li><li>(.+?)Real(.+?);<\/li>/gi, "<li>static float $1$2;</li><li>&$503</li>")
+      .replace(/<li>&\$503<\/li><li>(.+?)Boolean(.+?);<\/li>/gi,"<li>static bool $1$2;</li><li>&$503</li>")
+      .replace(/<li>&\$503<\/li><li>(.+?)Char(.+?);<\/li>/gi, "<li>static char $1$2;</li><li>&$503</li>")
+      .replace(/<li>&\$503<\/li><li>(.+?)String(.+?);<\/li>/gi, "<li>static string $1$2;</li><li>&$503</li>")
+
+      //.replace(/&\$503/gi,'')
 
       // Массивы
       .replace(/<li>(.+?)\barray\s*\[-(.+?)..(.+?)\]\s*of\s*integer;/gi, "<li>$1int[] = new int[$2+$3];")
