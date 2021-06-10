@@ -5,7 +5,7 @@ if (!localStorage.getItem('Бывалый')) {
     <div class="background">
         <div class="red-back">
             <div class="dialogue flex-container">
-               <img id="картинка" src="./images/assistant1.png">
+               <img id="картинка" src="./pictures/assistant1.png">
                <div class="dcontent">
                <p id="речь" class="dcontent">Hi, I'm Amber, your assistant. How can I call you?</p>
 
