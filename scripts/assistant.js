@@ -5,7 +5,7 @@ if (!localStorage.getItem('Бывалый')) {
     <div class="background">
         <div class="red-back">
             <div class="dialogue flex-container">
-               <img id="картинка" src="./pictures/assistant1.png">
+               <img id="картинка" src="./Pictures/assistant1.png">
                <div class="dcontent">
                <p id="речь" class="dcontent">Hi, I'm Amber, your assistant. How can I call you?</p>
 
@@ -26,7 +26,7 @@ function letsGo() {
         case 2:
             if (ответ.value != "") {
                 anim();
-                картинка.src = "./images/assistant2.png";
+                картинка.src = "./Pictures/assistant2.png";
                 речь.innerHTML = `Okay ${ответ.value}, before you start working with TE, I will give you a short tour of the interface`
                 localStorage.setItem("Name", ответ.value)
                 localStorage.setItem("Бывалый", 1)
@@ -40,7 +40,7 @@ function letsGo() {
             break;
         case 3:
             anim();
-            картинка.src = "./images/assistant3.png";
+            картинка.src = "./Pictures/assistant3.png";
             break;
         case 4:
             bg.remove();
