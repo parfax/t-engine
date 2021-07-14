@@ -1,21 +1,21 @@
 var count = 1;
 
-if (!localStorage.getItem('Бывалый')) {
-    document.write(`
-    <div class="background">
-        <div class="red-back">
-            <div class="dialogue flex-container">
-               <img id="картинка" src="./Pictures/assistant1.png">
-               <div class="dcontent">
-               <p id="речь" class="dcontent">Hi, I'm Amber, your assistant. How can I call you?</p>
+// if (!localStorage.getItem('Бывалый')) {
+//     document.write(`
+//     <div class="background">
+//         <div class="red-back">
+//             <div class="dialogue flex-container">
+//                <img id="картинка" src="./Pictures/assistant1.png">
+//                <div class="dcontent">
+//                <p id="речь" class="dcontent">Hi, I'm Amber, your assistant. How can I call you?</p>
 
-               <input id="ответ" type="text"class="assisInp dcontent" placeholder='Name' maxlength="16"/>
-                <button id="кнопка" class="dcontent" onclick='letsGo()'>Answer</button>
-            </div>
-        </div>
-    </div></div><div id="анимация">
-    `)
-}
+//                <input id="ответ" type="text"class="assisInp dcontent" placeholder='Name' maxlength="16"/>
+//                 <button id="кнопка" class="dcontent" onclick='letsGo()'>Answer</button>
+//             </div>
+//         </div>
+//     </div></div><div id="анимация">
+//     `)
+// }
 const bg = document.querySelector('.background'),
     rb = document.querySelector('.red-back'),
     диалог = document.querySelector('.dialogue');
