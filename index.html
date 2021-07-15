@@ -83,10 +83,6 @@
   </main>
   <footer>
     <div class="centerFooter">
-      <!-- Намёк на обратную связь :D
-        <h3 onclick="document.body.scrollTop=document.body.scrollHeight">
-        Contact us
-      </h3> -->
       <a class="arrow-down" id="arrow" onclick="openFooter()">
            <span class="arrowLeft s"></span>
          <span class="arrow-slide"></span>
@@ -183,7 +179,7 @@
 
     // Не вставлять html теги
     document.querySelector("ol").addEventListener("paste", function (e) {
-    text_area1.innerHTML.replace(/\n(.+?)/g, "<li>$1</li>");
+      text_area1.innerHTML.replace(/\n(.+?)/g, "<li>$1</li>");
       e.preventDefault();
       var text = e.clipboardData.getData("text/plain");
       document.execCommand("insertHTML", false, text);
@@ -194,5 +190,5 @@
       this.classList.toggle('active');
     });
   </script>
-  <span class="build">build 7 (10.06.2021)</span>
+  <span class="build">build 8 (15.07.2021)</span>
 </body>
