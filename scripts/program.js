@@ -41,7 +41,7 @@ function BoomIt() {
   }
 }
 
-// Auto Save версия 2
+// Auto Save v2.0
 function go_AS() {
   if (localStorage.getItem('check_autosave') == "true")
     localStorage.setItem("autosave", text_area1.innerHTML)
@@ -81,33 +81,6 @@ function copy() {
 }
 function outFunc() { tooltip.innerHTML = "Copy to clipboard"; }
 
-// File Input
-// function checkFile(fileInput) {
-//   var curFiles = fileInput.files;
-//   if (curFiles.length === 0) {
-//     for (var i = 0; i < curFiles.length; i++) {
-//       if (checkFileType(curFiles[i])) {
-//   alert(':фіа)');
-//       }
-//       else {
-        
-//   alert(':)');
-//       }
-//     }
-//   }
-// }
-// var fileTypes = [
-//   'image/*',
-//   'video/*'
-// ]
-// function checkFileType(file) {
-//   for(var i = 0; i < fileTypes.length; i++) {
-//     if(file.type === fileTypes[i]) {
-//       return true;
-//     }
-//   }
-//   return false;
-// }
 
 // Сам переводчик
 function TranslateIt(){

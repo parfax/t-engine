@@ -64,7 +64,7 @@ function Pascal2CSharp()
       // .replace(/<li>&\$503<\/li><li>(.+?)Char(.+?);<\/li>/gi, "<li>static char $1$2;</li><li>&$503</li>")
       // .replace(/<li>&\$503<\/li><li>(.+?)String(.+?);<\/li>/gi, "<li>static string $1$2;</li><li>&$503</li>")
 
-      //.replace(/&\$503/gi,'')
+      
 
       // Массивы
       .replace(/<li>(.+?)\barray\s*\[-(.+?)..(.+?)\]\s*of\s*integer;/gi, "<li>int[] $1= new int[$2+$3];")
@@ -121,9 +121,11 @@ function Pascal2CSharp()
       .replace(/char (.+?)\s*=\s*"(.+?)"/gi, "char $1 = '$2'")
       //.replace(/begin/gi, "{")
       .replace(/<>/gm, "!=")
+
+
       .replace(/<li>\s*begin(.+?)end.\s*<\/li>/i, 
-      `\n<li>public static void Main(string[] args)</li>\n
-      <li>{</li>$1<li>}</li>
+      `\n</li><li>public static void Main()</li>\n
+      <li>{</li>$1<li>}</li><li>
       `)
     +`<li>}</li>
     <li>}</li>
